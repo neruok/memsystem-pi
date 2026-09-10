@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "documents": [
+    "README.md",
+    "ROADMAP.md",
+    "docs/mcp-service-architecture.md",
+    "docs/pi-extension-architecture.md"
+  ],
+  "queries": [
+    {
+      "query": "Can a subsystem grant access to a project document?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Subsystem facets"}]
+    },
+    {
+      "query": "How does search hide stale vectors after a document is deleted?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Vector search"}]
+    },
+    {
+      "query": "What happens when the TurboVec index is unavailable?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Failure handling"}]
+    },
+    {
+      "query": "How does an index rebuild include document writes that happen during the rebuild?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "TurboVec projection"}]
+    },
+    {
+      "query": "Where does the Pi extension get authentication credentials?",
+      "relevant": [{"path": "docs/pi-extension-architecture.md", "heading": "Runtime behavior"}]
+    },
+    {
+      "query": "Can workspace configuration override the memory service URL or tenant?",
+      "relevant": [{"path": "docs/pi-extension-architecture.md", "heading": "Automatic scope resolution", "contains": "Workspace configuration cannot override"}]
+    },
+    {
+      "query": "How does automatic recall prevent stored prompt injection?",
+      "relevant": [{"path": "docs/pi-extension-architecture.md", "heading": "Automatic recall"}]
+    },
+    {
+      "query": "Which data does automatic journal capture exclude?",
+      "relevant": [{"path": "docs/pi-extension-architecture.md", "heading": "Automatic capture"}]
+    },
+    {
+      "query": "How does the extension choose a project for the current directory?",
+      "relevant": [{"path": "docs/pi-extension-architecture.md", "heading": "Automatic scope resolution", "contains": "longest matching project roots"}]
+    },
+    {
+      "query": "Which command repairs a missing local binding after a partial scope change?",
+      "relevant": [{"path": "docs/pi-extension-architecture.md", "heading": "Pi commands"}]
+    },
+    {
+      "query": "When does deleting a memory document require user confirmation?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "`memory_manage`"}]
+    },
+    {
+      "query": "How are concurrent document revision numbers kept monotonic?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Revision and chunk flow"}]
+    },
+    {
+      "query": "How are lexical and vector search rankings combined?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Hybrid search"}]
+    },
+    {
+      "query": "What views can memory_read return?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "`memory_read`"}]
+    },
+    {
+      "query": "Why does the vector index use database IDs instead of hashed UUIDs?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Design principles"}]
+    },
+    {
+      "query": "Does workspace membership automatically grant project access?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Default access rules"}]
+    },
+    {
+      "query": "How are unauthorized backlink sources kept hidden?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "`document_links`"}]
+    },
+    {
+      "query": "What must happen when the retrieval profile changes?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Retrieval profile"}]
+    },
+    {
+      "query": "How does the service prevent tenant context from leaking through pooled connections?",
+      "relevant": [{"path": "docs/mcp-service-architecture.md", "heading": "Tenant isolation and authorization"}]
+    },
+    {
+      "query": "What work remains for Pi context integration?",
+      "relevant": [{"path": "ROADMAP.md", "heading": "Phase 6: Pi context integration"}]
+    }
+  ]
+}

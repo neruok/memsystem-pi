@@ -1,0 +1,15 @@
+{
+  "dump": "data/simplewiki-latest-pages-articles-multistream.xml.bz2",
+  "dump_bytes": 385846687,
+  "dump_sha1": "50152ec5f40669eef3dc7b251d1a025fe3c0bb55",
+  "chunk_profile": "markdown-whitespace-v1-512-64",
+  "articles": 10000,
+  "chunks": 24806,
+  "source_bytes": 67131261,
+  "largest_article_bytes": 276573,
+  "largest_chunk_bytes": 16400,
+  "elapsed_seconds": 11.341,
+  "articles_per_second": 881.8,
+  "source_mib_per_second": 5.65,
+  "peak_rss_bytes": 22274048
+}

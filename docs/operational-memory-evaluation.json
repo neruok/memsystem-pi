@@ -1,0 +1,1259 @@
+{
+  "environment": {
+    "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "backend": "fastembed",
+    "fastembed": "0.8.0",
+    "turbovec": "1.0.0",
+    "evaluator_sha256": "189795d27f4590ccd1290aa5a9887a3e351eaf4eb45fc8addbebab544eb83e06"
+  },
+  "corpus": {
+    "manifest": "service/benchmarks/project-operational-corpus.json",
+    "chunk_profile": "markdown-whitespace-v1-512-64",
+    "documents": 89,
+    "queries": 32,
+    "source_sha256": "76bcdde1ffec1ccb7728e43823e23e4c1407d455bdfa60cd9bed04f2b30d8752"
+  },
+  "embedding": {
+    "model": "BAAI/bge-small-en-v1.5",
+    "dimension": 384,
+    "vectors_sha256": "d95335880aa9529b56a2adfffb9dd9e64785e37207dc1f17d6a5e29df76e6b84",
+    "seconds": 95.686
+  },
+  "metrics": {
+    "exact": {
+      "hit_rate_at_5": 0.84375,
+      "mean_recall_at_5": 0.84375,
+      "mean_reciprocal_rank_at_5": 0.718229
+    },
+    "turbovec_4bit": {
+      "hit_rate_at_5": 0.84375,
+      "mean_recall_at_5": 0.84375,
+      "mean_reciprocal_rank_at_5": 0.702604
+    },
+    "turbovec_2bit": {
+      "hit_rate_at_5": 0.84375,
+      "mean_recall_at_5": 0.84375,
+      "mean_reciprocal_rank_at_5": 0.713021
+    }
+  },
+  "queries": [
+    {
+      "query": "Can a subsystem grant access to a project document?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:12"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:12",
+            "docs/mcp-service-architecture.md:7",
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:41",
+            "docs/mcp-service-architecture.md:13"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:12",
+            "docs/mcp-service-architecture.md:7",
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:41",
+            "docs/mcp-service-architecture.md:13"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:12",
+            "docs/mcp-service-architecture.md:7",
+            "docs/mcp-service-architecture.md:13",
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:41"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does search hide stale vectors after a document is deleted?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:24"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 4,
+          "top": [
+            "service/benchmarks/operational-memories.md:5",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:29",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:40"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 4,
+          "top": [
+            "service/benchmarks/operational-memories.md:5",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:29",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:40"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 4,
+          "top": [
+            "service/benchmarks/operational-memories.md:5",
+            "docs/mcp-service-architecture.md:29",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:40"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What happens when the TurboVec index is unavailable?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:30"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:21",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:4",
+            "ROADMAP.md:6"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:21",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:31",
+            "docs/mcp-service-architecture.md:4"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:21",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:31",
+            "docs/mcp-service-architecture.md:4"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does an index rebuild include document writes that happen during the rebuild?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:21"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:20",
+            "docs/mcp-service-architecture.md:19",
+            "docs/mcp-service-architecture.md:39",
+            "docs/mcp-service-architecture.md:40",
+            "docs/mcp-service-architecture.md:14"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:20",
+            "docs/mcp-service-architecture.md:19",
+            "docs/mcp-service-architecture.md:39",
+            "docs/mcp-service-architecture.md:40",
+            "docs/mcp-service-architecture.md:14"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:20",
+            "docs/mcp-service-architecture.md:19",
+            "docs/mcp-service-architecture.md:39",
+            "docs/mcp-service-architecture.md:14",
+            "ROADMAP.md:11"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Where does the Pi extension get authentication credentials?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:4"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:4",
+            "docs/pi-extension-architecture.md:2",
+            "docs/pi-extension-architecture.md:5",
+            "README.md:4",
+            "ROADMAP.md:8"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 2,
+          "top": [
+            "docs/pi-extension-architecture.md:2",
+            "docs/pi-extension-architecture.md:4",
+            "docs/pi-extension-architecture.md:5",
+            "README.md:4",
+            "ROADMAP.md:8"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:4",
+            "docs/pi-extension-architecture.md:5",
+            "docs/pi-extension-architecture.md:2",
+            "README.md:4",
+            "docs/pi-extension-architecture.md:1"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Can workspace configuration override the memory service URL or tenant?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:5"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:6",
+            "docs/pi-extension-architecture.md:9",
+            "docs/mcp-service-architecture.md:37",
+            "docs/mcp-service-architecture.md:7"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:41",
+            "docs/mcp-service-architecture.md:37",
+            "docs/pi-extension-architecture.md:9",
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:0"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:41",
+            "docs/mcp-service-architecture.md:7",
+            "docs/pi-extension-architecture.md:9",
+            "ROADMAP.md:9",
+            "docs/mcp-service-architecture.md:37"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does automatic recall prevent stored prompt injection?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:7"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:7",
+            "ROADMAP.md:10",
+            "docs/mcp-service-architecture.md:37",
+            "docs/mcp-service-architecture.md:39",
+            "docs/pi-extension-architecture.md:10"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:7",
+            "ROADMAP.md:10",
+            "docs/mcp-service-architecture.md:37",
+            "docs/mcp-service-architecture.md:39",
+            "docs/pi-extension-architecture.md:9"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:7",
+            "docs/mcp-service-architecture.md:39",
+            "ROADMAP.md:10",
+            "docs/mcp-service-architecture.md:37",
+            "ROADMAP.md:9"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Which data does automatic journal capture exclude?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:8"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:8",
+            "ROADMAP.md:10",
+            "docs/pi-extension-architecture.md:7",
+            "docs/mcp-service-architecture.md:39",
+            "docs/mcp-service-architecture.md:14"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:8",
+            "ROADMAP.md:10",
+            "docs/pi-extension-architecture.md:7",
+            "docs/mcp-service-architecture.md:39",
+            "docs/mcp-service-architecture.md:14"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:8",
+            "ROADMAP.md:10",
+            "docs/pi-extension-architecture.md:7",
+            "docs/mcp-service-architecture.md:14",
+            "docs/mcp-service-architecture.md:43"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does the extension choose a project for the current directory?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:5",
+        "docs/pi-extension-architecture.md:6"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:13",
+            "docs/pi-extension-architecture.md:5",
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:2"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:5",
+            "docs/mcp-service-architecture.md:13",
+            "docs/pi-extension-architecture.md:2"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:13",
+            "docs/pi-extension-architecture.md:5",
+            "docs/pi-extension-architecture.md:2",
+            "docs/pi-extension-architecture.md:4"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Which command repairs a missing local binding after a partial scope change?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:9"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 3,
+          "top": [
+            "ROADMAP.md:9",
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:9",
+            "docs/pi-extension-architecture.md:3",
+            "ROADMAP.md:8"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 3,
+          "top": [
+            "ROADMAP.md:9",
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:9",
+            "docs/pi-extension-architecture.md:3",
+            "ROADMAP.md:8"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 3,
+          "top": [
+            "ROADMAP.md:9",
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:9",
+            "ROADMAP.md:8",
+            "docs/pi-extension-architecture.md:3"
+          ]
+        }
+      }
+    },
+    {
+      "query": "When does deleting a memory document require user confirmation?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:40"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:40",
+            "docs/mcp-service-architecture.md:29",
+            "docs/pi-extension-architecture.md:9",
+            "service/benchmarks/operational-memories.md:12",
+            "docs/mcp-service-architecture.md:39"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:40",
+            "docs/mcp-service-architecture.md:29",
+            "docs/pi-extension-architecture.md:9",
+            "service/benchmarks/operational-memories.md:12",
+            "ROADMAP.md:9"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:40",
+            "docs/mcp-service-architecture.md:29",
+            "docs/pi-extension-architecture.md:9",
+            "ROADMAP.md:9",
+            "docs/mcp-service-architecture.md:42"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How are concurrent document revision numbers kept monotonic?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:20"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 2,
+          "top": [
+            "docs/mcp-service-architecture.md:15",
+            "docs/mcp-service-architecture.md:20",
+            "docs/mcp-service-architecture.md:14",
+            "ROADMAP.md:4",
+            "docs/mcp-service-architecture.md:34"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 2,
+          "top": [
+            "docs/mcp-service-architecture.md:15",
+            "docs/mcp-service-architecture.md:20",
+            "docs/mcp-service-architecture.md:14",
+            "ROADMAP.md:4",
+            "docs/mcp-service-architecture.md:34"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 2,
+          "top": [
+            "docs/mcp-service-architecture.md:15",
+            "docs/mcp-service-architecture.md:20",
+            "docs/mcp-service-architecture.md:34",
+            "docs/mcp-service-architecture.md:14",
+            "ROADMAP.md:4"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How are lexical and vector search rankings combined?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:25"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:25",
+            "ROADMAP.md:7",
+            "service/benchmarks/operational-memories.md:5",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:23"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:25",
+            "ROADMAP.md:7",
+            "docs/mcp-service-architecture.md:24",
+            "service/benchmarks/operational-memories.md:5",
+            "docs/mcp-service-architecture.md:23"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:25",
+            "ROADMAP.md:7",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:23"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What views can memory_read return?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:38"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 2,
+          "top": [
+            "docs/mcp-service-architecture.md:37",
+            "docs/mcp-service-architecture.md:38",
+            "README.md:3",
+            "service/benchmarks/operational-memories.md:0",
+            "docs/pi-extension-architecture.md:0"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 2,
+          "top": [
+            "docs/mcp-service-architecture.md:37",
+            "docs/mcp-service-architecture.md:38",
+            "README.md:3",
+            "service/benchmarks/operational-memories.md:0",
+            "docs/pi-extension-architecture.md:0"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 3,
+          "top": [
+            "docs/mcp-service-architecture.md:37",
+            "README.md:3",
+            "docs/mcp-service-architecture.md:38",
+            "ROADMAP.md:7",
+            "service/benchmarks/operational-memories.md:0"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Why does the vector index use database IDs instead of hashed UUIDs?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:4"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:11",
+            "docs/mcp-service-architecture.md:16",
+            "docs/mcp-service-architecture.md:21",
+            "docs/mcp-service-architecture.md:19"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:11",
+            "docs/mcp-service-architecture.md:16",
+            "docs/mcp-service-architecture.md:19",
+            "docs/mcp-service-architecture.md:21"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 5,
+          "top": [
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:16",
+            "docs/mcp-service-architecture.md:11",
+            "docs/mcp-service-architecture.md:19",
+            "docs/mcp-service-architecture.md:4"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Does workspace membership automatically grant project access?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:7"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:7",
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:12",
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:5"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:7",
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:41",
+            "docs/mcp-service-architecture.md:12",
+            "docs/pi-extension-architecture.md:5"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:7",
+            "docs/pi-extension-architecture.md:6",
+            "docs/pi-extension-architecture.md:5",
+            "docs/mcp-service-architecture.md:11",
+            "docs/mcp-service-architecture.md:12"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How are unauthorized backlink sources kept hidden?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:17"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:17",
+            "docs/mcp-service-architecture.md:32",
+            "docs/mcp-service-architecture.md:27",
+            "service/benchmarks/operational-memories.md:7",
+            "docs/mcp-service-architecture.md:41"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:17",
+            "docs/mcp-service-architecture.md:32",
+            "service/benchmarks/operational-memories.md:7",
+            "docs/mcp-service-architecture.md:41",
+            "docs/mcp-service-architecture.md:27"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:17",
+            "ROADMAP.md:1",
+            "docs/mcp-service-architecture.md:41",
+            "docs/mcp-service-architecture.md:32",
+            "docs/mcp-service-architecture.md:27"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What must happen when the retrieval profile changes?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:9"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:9",
+            "docs/mcp-service-architecture.md:37",
+            "ROADMAP.md:7",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:40"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:9",
+            "docs/mcp-service-architecture.md:37",
+            "ROADMAP.md:7",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:40"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:9",
+            "docs/mcp-service-architecture.md:37",
+            "ROADMAP.md:7",
+            "docs/mcp-service-architecture.md:40",
+            "docs/mcp-service-architecture.md:31"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How does the service prevent tenant context from leaking through pooled connections?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:28"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:28",
+            "docs/mcp-service-architecture.md:7",
+            "docs/mcp-service-architecture.md:32",
+            "docs/mcp-service-architecture.md:11",
+            "docs/mcp-service-architecture.md:34"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:28",
+            "docs/mcp-service-architecture.md:7",
+            "docs/mcp-service-architecture.md:32",
+            "docs/pi-extension-architecture.md:6",
+            "docs/mcp-service-architecture.md:11"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "docs/mcp-service-architecture.md:28",
+            "docs/mcp-service-architecture.md:7",
+            "docs/mcp-service-architecture.md:11",
+            "docs/mcp-service-architecture.md:32",
+            "docs/mcp-service-architecture.md:34"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What work remains for Pi context integration?",
+      "relevant": [
+        "ROADMAP.md:8"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "ROADMAP.md:8",
+            "docs/pi-extension-architecture.md:2",
+            "README.md:1",
+            "docs/pi-extension-architecture.md:0",
+            "ROADMAP.md:2"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "ROADMAP.md:8",
+            "docs/pi-extension-architecture.md:2",
+            "README.md:1",
+            "docs/pi-extension-architecture.md:0",
+            "ROADMAP.md:2"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "ROADMAP.md:8",
+            "docs/pi-extension-architecture.md:2",
+            "ROADMAP.md:2",
+            "README.md:1",
+            "docs/pi-extension-architecture.md:0"
+          ]
+        }
+      }
+    },
+    {
+      "query": "When should an API deployment be rolled back?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:1"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:1",
+            "docs/mcp-service-architecture.md:44",
+            "ROADMAP.md:9",
+            "ROADMAP.md:11",
+            "service/benchmarks/operational-memories.md:7"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:1",
+            "ROADMAP.md:9",
+            "docs/mcp-service-architecture.md:44",
+            "ROADMAP.md:11",
+            "service/benchmarks/operational-memories.md:7"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:1",
+            "ROADMAP.md:9",
+            "docs/mcp-service-architecture.md:44",
+            "service/benchmarks/operational-memories.md:2",
+            "docs/pi-extension-architecture.md:2"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What caused valid sessions to fail after signing key rotation?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:2"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:2",
+            "docs/mcp-service-architecture.md:39",
+            "ROADMAP.md:1",
+            "docs/mcp-service-architecture.md:41",
+            "ROADMAP.md:9"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:2",
+            "ROADMAP.md:1",
+            "docs/mcp-service-architecture.md:39",
+            "docs/mcp-service-architecture.md:41",
+            "docs/pi-extension-architecture.md:2"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:2",
+            "ROADMAP.md:1",
+            "docs/mcp-service-architecture.md:39",
+            "ROADMAP.md:9",
+            "ROADMAP.md:8"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What happens when a charge idempotency key is reused with different content?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:3"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:3",
+            "docs/mcp-service-architecture.md:39",
+            "docs/pi-extension-architecture.md:7",
+            "ROADMAP.md:1",
+            "docs/mcp-service-architecture.md:14"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:3",
+            "docs/mcp-service-architecture.md:39",
+            "docs/pi-extension-architecture.md:7",
+            "docs/mcp-service-architecture.md:14",
+            "ROADMAP.md:1"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:3",
+            "docs/mcp-service-architecture.md:39",
+            "service/benchmarks/operational-memories.md:2",
+            "ROADMAP.md:1",
+            "docs/pi-extension-architecture.md:7"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How many database connections are reserved for maintenance?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:4"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:4",
+            "docs/mcp-service-architecture.md:28",
+            "service/benchmarks/operational-memories.md:1",
+            "docs/mcp-service-architecture.md:34",
+            "ROADMAP.md:3"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:4",
+            "docs/mcp-service-architecture.md:28",
+            "service/benchmarks/operational-memories.md:1",
+            "ROADMAP.md:3",
+            "docs/mcp-service-architecture.md:34"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:4",
+            "docs/mcp-service-architecture.md:28",
+            "service/benchmarks/operational-memories.md:1",
+            "docs/mcp-service-architecture.md:34",
+            "docs/mcp-service-architecture.md:2"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How should operators recover a damaged vector index?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:5"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:5",
+            "docs/mcp-service-architecture.md:19",
+            "ROADMAP.md:7",
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:24"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:5",
+            "docs/mcp-service-architecture.md:19",
+            "ROADMAP.md:7",
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:24"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:5",
+            "docs/mcp-service-architecture.md:19",
+            "ROADMAP.md:7",
+            "docs/mcp-service-architecture.md:24",
+            "docs/mcp-service-architecture.md:30"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Can a pagination cursor be reused after filters change?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:6"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:6",
+            "ROADMAP.md:10",
+            "docs/mcp-service-architecture.md:38",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:37"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:6",
+            "ROADMAP.md:10",
+            "docs/mcp-service-architecture.md:38",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:39"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:6",
+            "ROADMAP.md:10",
+            "docs/mcp-service-architecture.md:40",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:38"
+          ]
+        }
+      }
+    },
+    {
+      "query": "How long does a customer export archive remain available?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:7"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:7",
+            "service/benchmarks/operational-memories.md:1",
+            "docs/mcp-service-architecture.md:34",
+            "service/benchmarks/operational-memories.md:3",
+            "docs/mcp-service-architecture.md:29"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:7",
+            "service/benchmarks/operational-memories.md:1",
+            "docs/mcp-service-architecture.md:34",
+            "service/benchmarks/operational-memories.md:3",
+            "docs/mcp-service-architecture.md:29"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:7",
+            "ROADMAP.md:7",
+            "docs/mcp-service-architecture.md:29",
+            "docs/mcp-service-architecture.md:34",
+            "service/benchmarks/operational-memories.md:3"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Which command runs both extension and service tests?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:8"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 5,
+          "top": [
+            "docs/pi-extension-architecture.md:4",
+            "ROADMAP.md:2",
+            "docs/pi-extension-architecture.md:5",
+            "docs/pi-extension-architecture.md:6",
+            "service/benchmarks/operational-memories.md:8"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 5,
+          "top": [
+            "docs/pi-extension-architecture.md:4",
+            "ROADMAP.md:2",
+            "docs/pi-extension-architecture.md:6",
+            "docs/pi-extension-architecture.md:5",
+            "service/benchmarks/operational-memories.md:8"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 5,
+          "top": [
+            "ROADMAP.md:2",
+            "docs/pi-extension-architecture.md:4",
+            "service/benchmarks/operational-memories.md:11",
+            "README.md:1",
+            "service/benchmarks/operational-memories.md:8"
+          ]
+        }
+      }
+    },
+    {
+      "query": "May structured logs contain document content or raw prompts?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:9"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:9",
+            "docs/mcp-service-architecture.md:34",
+            "ROADMAP.md:5",
+            "ROADMAP.md:1",
+            "docs/mcp-service-architecture.md:39"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:9",
+            "docs/mcp-service-architecture.md:34",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:42",
+            "docs/mcp-service-architecture.md:33"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": 1,
+          "top": [
+            "service/benchmarks/operational-memories.md:9",
+            "docs/mcp-service-architecture.md:34",
+            "ROADMAP.md:5",
+            "docs/mcp-service-architecture.md:42",
+            "ROADMAP.md:7"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What must a retry check before storing an embedding result?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:10"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:34",
+            "docs/mcp-service-architecture.md:20",
+            "ROADMAP.md:6",
+            "ROADMAP.md:7"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:20",
+            "docs/mcp-service-architecture.md:34",
+            "ROADMAP.md:6",
+            "ROADMAP.md:7"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:30",
+            "docs/mcp-service-architecture.md:20",
+            "ROADMAP.md:7",
+            "docs/mcp-service-architecture.md:34",
+            "ROADMAP.md:6"
+          ]
+        }
+      }
+    },
+    {
+      "query": "Where should authoritative tenant state be stored?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:11"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:6",
+            "docs/mcp-service-architecture.md:32",
+            "docs/mcp-service-architecture.md:28",
+            "docs/mcp-service-architecture.md:34",
+            "docs/mcp-service-architecture.md:11"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:6",
+            "docs/mcp-service-architecture.md:32",
+            "docs/mcp-service-architecture.md:34",
+            "docs/mcp-service-architecture.md:28",
+            "docs/mcp-service-architecture.md:11"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:6",
+            "docs/mcp-service-architecture.md:34",
+            "docs/mcp-service-architecture.md:28",
+            "docs/mcp-service-architecture.md:7",
+            "docs/mcp-service-architecture.md:11"
+          ]
+        }
+      }
+    },
+    {
+      "query": "What should be disabled when memory context resolution is ambiguous?",
+      "relevant": [
+        "service/benchmarks/operational-memories.md:12"
+      ],
+      "rankings": {
+        "exact": {
+          "first_relevant_rank_at_5": 5,
+          "top": [
+            "docs/mcp-service-architecture.md:37",
+            "ROADMAP.md:9",
+            "README.md:3",
+            "docs/pi-extension-architecture.md:0",
+            "service/benchmarks/operational-memories.md:12"
+          ]
+        },
+        "turbovec_4bit": {
+          "first_relevant_rank_at_5": 5,
+          "top": [
+            "docs/mcp-service-architecture.md:37",
+            "ROADMAP.md:9",
+            "README.md:3",
+            "docs/pi-extension-architecture.md:0",
+            "service/benchmarks/operational-memories.md:12"
+          ]
+        },
+        "turbovec_2bit": {
+          "first_relevant_rank_at_5": null,
+          "top": [
+            "docs/mcp-service-architecture.md:37",
+            "ROADMAP.md:9",
+            "ROADMAP.md:7",
+            "README.md:3",
+            "docs/pi-extension-architecture.md:0"
+          ]
+        }
+      }
+    }
+  ]
+}

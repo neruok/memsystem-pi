@@ -1,0 +1,575 @@
+{
+  "seeds": [
+    7,
+    17,
+    29
+  ],
+  "aggregate": {
+    "runs": 3,
+    "engines": {
+      "pgvector_exact": {
+        "process_peak_rss_delta_bytes_mean": 47644672,
+        "process_peak_rss_delta_bytes_max": 47869952,
+        "cases": {
+          "unfiltered": {
+            "recall_at_k_mean": 1.0,
+            "recall_at_k_min": 1.0,
+            "latency_ms_p95_mean": 251.353,
+            "latency_ms_p95_max": 267.967
+          },
+          "broad_contiguous_50pct": {
+            "recall_at_k_mean": 1.0,
+            "recall_at_k_min": 1.0,
+            "latency_ms_p95_mean": 1284.507,
+            "latency_ms_p95_max": 1333.04
+          },
+          "scattered_random_10pct": {
+            "recall_at_k_mean": 1.0,
+            "recall_at_k_min": 1.0,
+            "latency_ms_p95_mean": 335.919,
+            "latency_ms_p95_max": 348.597
+          }
+        }
+      },
+      "pgvector_hnsw": {
+        "process_peak_rss_delta_bytes_mean": 75307691,
+        "process_peak_rss_delta_bytes_max": 75771904,
+        "cases": {
+          "unfiltered": {
+            "recall_at_k_mean": 0.274667,
+            "recall_at_k_min": 0.25,
+            "latency_ms_p95_mean": 44.9,
+            "latency_ms_p95_max": 64.158
+          },
+          "broad_contiguous_50pct": {
+            "recall_at_k_mean": 0.254667,
+            "recall_at_k_min": 0.22,
+            "latency_ms_p95_mean": 81.654,
+            "latency_ms_p95_max": 108.276
+          },
+          "scattered_random_10pct": {
+            "recall_at_k_mean": 0.179333,
+            "recall_at_k_min": 0.176,
+            "latency_ms_p95_mean": 81.626,
+            "latency_ms_p95_max": 93.248
+          }
+        }
+      },
+      "turbovec_4bit": {
+        "process_peak_rss_delta_bytes_mean": 233450155,
+        "process_peak_rss_delta_bytes_max": 234590208,
+        "cases": {
+          "unfiltered": {
+            "recall_at_k_mean": 0.837333,
+            "recall_at_k_min": 0.824,
+            "latency_ms_p95_mean": 8.715,
+            "latency_ms_p95_max": 10.198
+          },
+          "broad_contiguous_50pct": {
+            "recall_at_k_mean": 0.846667,
+            "recall_at_k_min": 0.838,
+            "latency_ms_p95_mean": 3.283,
+            "latency_ms_p95_max": 3.641
+          },
+          "scattered_random_10pct": {
+            "recall_at_k_mean": 0.865333,
+            "recall_at_k_min": 0.858,
+            "latency_ms_p95_mean": 4.248,
+            "latency_ms_p95_max": 4.548
+          }
+        }
+      },
+      "turbovec_2bit": {
+        "process_peak_rss_delta_bytes_mean": 215934293,
+        "process_peak_rss_delta_bytes_max": 217051136,
+        "cases": {
+          "unfiltered": {
+            "recall_at_k_mean": 0.555333,
+            "recall_at_k_min": 0.554,
+            "latency_ms_p95_mean": 7.259,
+            "latency_ms_p95_max": 7.559
+          },
+          "broad_contiguous_50pct": {
+            "recall_at_k_mean": 0.54,
+            "recall_at_k_min": 0.506,
+            "latency_ms_p95_mean": 2.04,
+            "latency_ms_p95_max": 2.488
+          },
+          "scattered_random_10pct": {
+            "recall_at_k_mean": 0.6,
+            "recall_at_k_min": 0.586,
+            "latency_ms_p95_mean": 2.982,
+            "latency_ms_p95_max": 3.609
+          }
+        }
+      }
+    }
+  },
+  "reports": [
+    {
+      "environment": {
+        "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+        "cpu_count": 32,
+        "cpu_model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+        "memory_bytes": 135019393024,
+        "python": "3.13.5",
+        "numpy": "2.5.2",
+        "pgvector_python": "0.5.0",
+        "postgres": "17.11 (Debian 17.11-1.pgdg12+2)",
+        "pgvector_postgres": "0.8.6",
+        "turbovec": "1.0.0"
+      },
+      "measurement": {
+        "latency_scope": "engine call after one warmup query; PostgreSQL includes client serialization and server round trip",
+        "throughput": "serial inverse mean latency",
+        "memory": "process VmHWM growth from a fresh isolated process baseline through build, load, and search; PostgreSQL parallel workers disabled"
+      },
+      "corpus": {
+        "kind": "deterministic_clustered_vectors",
+        "items": 25000,
+        "queries": 50,
+        "dimension": 1536,
+        "clusters": 100,
+        "seed": 7,
+        "k": 10,
+        "filters": {
+          "unfiltered": 25000,
+          "broad_contiguous_50pct": 12500,
+          "scattered_random_10pct": 2500
+        }
+      },
+      "engines": {
+        "pgvector_exact": {
+          "build_seconds": 1.681,
+          "index_bytes": 0,
+          "table_bytes": 208674816,
+          "process_peak_rss_bytes": 68239360,
+          "process_peak_rss_delta_bytes": 47525888,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 244.579,
+              "latency_ms_p95": 267.967,
+              "throughput_qps": 3.966
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 1271.36,
+              "latency_ms_p95": 1333.04,
+              "throughput_qps": 0.78
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 323.384,
+              "latency_ms_p95": 348.597,
+              "throughput_qps": 3.057
+            }
+          }
+        },
+        "pgvector_hnsw": {
+          "build_seconds": 344.741,
+          "index_bytes": 204808192,
+          "table_bytes": 208674816,
+          "process_peak_rss_bytes": 95780864,
+          "process_peak_rss_delta_bytes": 75141120,
+          "backend_memory_context_bytes": 10570152,
+          "settings": {
+            "plans_verified": [
+              "unfiltered",
+              "broad_contiguous_50pct",
+              "scattered_random_10pct"
+            ],
+            "ef_search": 40,
+            "iterative_scan": "strict_order",
+            "index_options": "defaults",
+            "parallel_workers": 0
+          },
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.288,
+              "latency_ms_p50": 10.524,
+              "latency_ms_p95": 19.576,
+              "throughput_qps": 79.371
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.266,
+              "latency_ms_p50": 39.469,
+              "latency_ms_p95": 70.954,
+              "throughput_qps": 22.675
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.176,
+              "latency_ms_p50": 48.588,
+              "latency_ms_p95": 72.379,
+              "throughput_qps": 20.66
+            }
+          }
+        },
+        "turbovec_4bit": {
+          "build_seconds": 0.493,
+          "load_seconds": 0.022,
+          "index_bytes": 21160275,
+          "process_peak_rss_bytes": 470167552,
+          "process_peak_rss_delta_bytes": 231870464,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.824,
+              "latency_ms_p50": 6.938,
+              "latency_ms_p95": 10.118,
+              "throughput_qps": 131.38
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.854,
+              "latency_ms_p50": 3.538,
+              "latency_ms_p95": 3.641,
+              "throughput_qps": 295.166
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.858,
+              "latency_ms_p50": 3.962,
+              "latency_ms_p95": 4.113,
+              "throughput_qps": 253.004
+            }
+          }
+        },
+        "turbovec_2bit": {
+          "build_seconds": 0.306,
+          "load_seconds": 0.014,
+          "index_bytes": 10753011,
+          "process_peak_rss_bytes": 455266304,
+          "process_peak_rss_delta_bytes": 216969216,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.554,
+              "latency_ms_p50": 4.518,
+              "latency_ms_p95": 7.559,
+              "throughput_qps": 206.637
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.548,
+              "latency_ms_p50": 2.345,
+              "latency_ms_p95": 2.488,
+              "throughput_qps": 423.191
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.586,
+              "latency_ms_p50": 3.546,
+              "latency_ms_p95": 3.609,
+              "throughput_qps": 297.086
+            }
+          }
+        }
+      }
+    },
+    {
+      "environment": {
+        "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+        "cpu_count": 32,
+        "cpu_model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+        "memory_bytes": 135019393024,
+        "python": "3.13.5",
+        "numpy": "2.5.2",
+        "pgvector_python": "0.5.0",
+        "postgres": "17.11 (Debian 17.11-1.pgdg12+2)",
+        "pgvector_postgres": "0.8.6",
+        "turbovec": "1.0.0"
+      },
+      "measurement": {
+        "latency_scope": "engine call after one warmup query; PostgreSQL includes client serialization and server round trip",
+        "throughput": "serial inverse mean latency",
+        "memory": "process VmHWM growth from a fresh isolated process baseline through build, load, and search; PostgreSQL parallel workers disabled"
+      },
+      "corpus": {
+        "kind": "deterministic_clustered_vectors",
+        "items": 25000,
+        "queries": 50,
+        "dimension": 1536,
+        "clusters": 100,
+        "seed": 17,
+        "k": 10,
+        "filters": {
+          "unfiltered": 25000,
+          "broad_contiguous_50pct": 12500,
+          "scattered_random_10pct": 2500
+        }
+      },
+      "engines": {
+        "pgvector_exact": {
+          "build_seconds": 1.597,
+          "index_bytes": 0,
+          "table_bytes": 208674816,
+          "process_peak_rss_bytes": 68276224,
+          "process_peak_rss_delta_bytes": 47538176,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 233.216,
+              "latency_ms_p95": 252.125,
+              "throughput_qps": 4.237
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 1258.57,
+              "latency_ms_p95": 1281.464,
+              "throughput_qps": 0.794
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 320.645,
+              "latency_ms_p95": 340.129,
+              "throughput_qps": 3.084
+            }
+          }
+        },
+        "pgvector_hnsw": {
+          "build_seconds": 316.885,
+          "index_bytes": 204808192,
+          "table_bytes": 208674816,
+          "process_peak_rss_bytes": 95023104,
+          "process_peak_rss_delta_bytes": 75010048,
+          "backend_memory_context_bytes": 10569128,
+          "settings": {
+            "plans_verified": [
+              "unfiltered",
+              "broad_contiguous_50pct",
+              "scattered_random_10pct"
+            ],
+            "ef_search": 40,
+            "iterative_scan": "strict_order",
+            "index_options": "defaults",
+            "parallel_workers": 0
+          },
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.286,
+              "latency_ms_p50": 13.762,
+              "latency_ms_p95": 50.966,
+              "throughput_qps": 46.041
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.278,
+              "latency_ms_p50": 50.423,
+              "latency_ms_p95": 65.733,
+              "throughput_qps": 19.302
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.18,
+              "latency_ms_p50": 45.68,
+              "latency_ms_p95": 93.248,
+              "throughput_qps": 19.379
+            }
+          }
+        },
+        "turbovec_4bit": {
+          "build_seconds": 0.561,
+          "load_seconds": 0.027,
+          "index_bytes": 21160275,
+          "process_peak_rss_bytes": 472588288,
+          "process_peak_rss_delta_bytes": 233889792,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.848,
+              "latency_ms_p50": 4.985,
+              "latency_ms_p95": 5.83,
+              "throughput_qps": 201.273
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.838,
+              "latency_ms_p50": 2.381,
+              "latency_ms_p95": 2.602,
+              "throughput_qps": 418.724
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.864,
+              "latency_ms_p50": 3.776,
+              "latency_ms_p95": 4.084,
+              "throughput_qps": 263.219
+            }
+          }
+        },
+        "turbovec_2bit": {
+          "build_seconds": 0.288,
+          "load_seconds": 0.014,
+          "index_bytes": 10753011,
+          "process_peak_rss_bytes": 452481024,
+          "process_peak_rss_delta_bytes": 213782528,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.558,
+              "latency_ms_p50": 2.69,
+              "latency_ms_p95": 7.164,
+              "throughput_qps": 304.157
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.566,
+              "latency_ms_p50": 1.392,
+              "latency_ms_p95": 1.563,
+              "throughput_qps": 707.553
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.604,
+              "latency_ms_p50": 2.01,
+              "latency_ms_p95": 2.253,
+              "throughput_qps": 491.265
+            }
+          }
+        }
+      }
+    },
+    {
+      "environment": {
+        "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+        "cpu_count": 32,
+        "cpu_model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+        "memory_bytes": 135019393024,
+        "python": "3.13.5",
+        "numpy": "2.5.2",
+        "pgvector_python": "0.5.0",
+        "postgres": "17.11 (Debian 17.11-1.pgdg12+2)",
+        "pgvector_postgres": "0.8.6",
+        "turbovec": "1.0.0"
+      },
+      "measurement": {
+        "latency_scope": "engine call after one warmup query; PostgreSQL includes client serialization and server round trip",
+        "throughput": "serial inverse mean latency",
+        "memory": "process VmHWM growth from a fresh isolated process baseline through build, load, and search; PostgreSQL parallel workers disabled"
+      },
+      "corpus": {
+        "kind": "deterministic_clustered_vectors",
+        "items": 25000,
+        "queries": 50,
+        "dimension": 1536,
+        "clusters": 100,
+        "seed": 29,
+        "k": 10,
+        "filters": {
+          "unfiltered": 25000,
+          "broad_contiguous_50pct": 12500,
+          "scattered_random_10pct": 2500
+        }
+      },
+      "engines": {
+        "pgvector_exact": {
+          "build_seconds": 1.663,
+          "index_bytes": 0,
+          "table_bytes": 208674816,
+          "process_peak_rss_bytes": 68419584,
+          "process_peak_rss_delta_bytes": 47869952,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 217.596,
+              "latency_ms_p95": 233.968,
+              "throughput_qps": 4.58
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 1185.379,
+              "latency_ms_p95": 1239.018,
+              "throughput_qps": 0.84
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 1.0,
+              "latency_ms_p50": 297.873,
+              "latency_ms_p95": 319.03,
+              "throughput_qps": 3.316
+            }
+          }
+        },
+        "pgvector_hnsw": {
+          "build_seconds": 351.299,
+          "index_bytes": 204808192,
+          "table_bytes": 208674816,
+          "process_peak_rss_bytes": 96157696,
+          "process_peak_rss_delta_bytes": 75771904,
+          "backend_memory_context_bytes": 10570152,
+          "settings": {
+            "plans_verified": [
+              "unfiltered",
+              "broad_contiguous_50pct",
+              "scattered_random_10pct"
+            ],
+            "ef_search": 40,
+            "iterative_scan": "strict_order",
+            "index_options": "defaults",
+            "parallel_workers": 0
+          },
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.25,
+              "latency_ms_p50": 26.949,
+              "latency_ms_p95": 64.158,
+              "throughput_qps": 31.363
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.22,
+              "latency_ms_p50": 61.385,
+              "latency_ms_p95": 108.276,
+              "throughput_qps": 14.807
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.182,
+              "latency_ms_p50": 54.69,
+              "latency_ms_p95": 79.252,
+              "throughput_qps": 19.098
+            }
+          }
+        },
+        "turbovec_4bit": {
+          "build_seconds": 0.524,
+          "load_seconds": 0.027,
+          "index_bytes": 21160275,
+          "process_peak_rss_bytes": 474759168,
+          "process_peak_rss_delta_bytes": 234590208,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.84,
+              "latency_ms_p50": 7.747,
+              "latency_ms_p95": 10.198,
+              "throughput_qps": 123.861
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.848,
+              "latency_ms_p50": 3.574,
+              "latency_ms_p95": 3.606,
+              "throughput_qps": 282.383
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.874,
+              "latency_ms_p50": 4.255,
+              "latency_ms_p95": 4.548,
+              "throughput_qps": 233.867
+            }
+          }
+        },
+        "turbovec_2bit": {
+          "build_seconds": 0.318,
+          "load_seconds": 0.015,
+          "index_bytes": 10753011,
+          "process_peak_rss_bytes": 457220096,
+          "process_peak_rss_delta_bytes": 217051136,
+          "cases": {
+            "unfiltered": {
+              "recall_at_k": 0.554,
+              "latency_ms_p50": 3.94,
+              "latency_ms_p95": 7.053,
+              "throughput_qps": 231.706
+            },
+            "broad_contiguous_50pct": {
+              "recall_at_k": 0.506,
+              "latency_ms_p50": 2.044,
+              "latency_ms_p95": 2.068,
+              "throughput_qps": 488.27
+            },
+            "scattered_random_10pct": {
+              "recall_at_k": 0.61,
+              "latency_ms_p50": 3.052,
+              "latency_ms_p95": 3.085,
+              "throughput_qps": 327.183
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "environment": {
+    "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "backend": "qwen-transformers",
+    "torch": "2.11.0",
+    "transformers": "5.15.1",
+    "device": "cuda",
+    "dtype": "float16",
+    "requested_model_revision": null,
+    "resolved_model_revision_from_cache": "1d8ad4ca9b3dd8059ad90a75d4983776a23d44af",
+    "task_instruction": "Given a web search query, retrieve relevant passages that answer the query",
+    "max_length": 8192,
+    "batch_size": 1,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "cuda_runtime": "13.0",
+    "nvidia_driver": "610.43.02",
+    "peak_pytorch_allocated_bytes": 15385838592,
+    "provenance_note": "Quality-only legacy run before revision pinning; resolved cache ref recorded after run"
+  },
+  "corpus": {
+    "manifest": "service/benchmarks/project-docs-corpus.json",
+    "chunk_profile": "markdown-whitespace-v1-512-64",
+    "documents": 76,
+    "queries": 20,
+    "source_sha256": "8b2bced9edac52f19df9988fd88e520e51ad067945ed432bf2e6f01dffddc8bf"
+  },
+  "embedding": {
+    "model": "Qwen/Qwen3-Embedding-8B",
+    "dimension": 1536,
+    "vectors_sha256": "86df956218904371cb40d5b841b7d7ee34864efec16b43ef27e061934f4f4b46"
+  },
+  "metrics": {
+    "exact": {
+      "hit_rate_at_5": 0.95,
+      "mean_recall_at_5": 0.95,
+      "mean_reciprocal_rank_at_5": 0.745833
+    }
+  },
+  "queries": [
+    {
+      "query": "Can a subsystem grant access to a project document?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:12"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:12",
+        "docs/mcp-service-architecture.md:7",
+        "docs/pi-extension-architecture.md:6",
+        "docs/pi-extension-architecture.md:5",
+        "docs/mcp-service-architecture.md:41"
+      ]
+    },
+    {
+      "query": "How does search hide stale vectors after a document is deleted?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:24"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:29",
+        "docs/mcp-service-architecture.md:24",
+        "docs/mcp-service-architecture.md:21",
+        "docs/mcp-service-architecture.md:2",
+        "docs/mcp-service-architecture.md:33"
+      ]
+    },
+    {
+      "query": "What happens when the TurboVec index is unavailable?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:30"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:21",
+        "ROADMAP.md:6",
+        "docs/mcp-service-architecture.md:30",
+        "docs/mcp-service-architecture.md:24",
+        "ROADMAP.md:7"
+      ]
+    },
+    {
+      "query": "How does an index rebuild include document writes that happen during the rebuild?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:21"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:19",
+        "docs/mcp-service-architecture.md:21",
+        "docs/mcp-service-architecture.md:20",
+        "docs/mcp-service-architecture.md:18",
+        "docs/mcp-service-architecture.md:33"
+      ]
+    },
+    {
+      "query": "Where does the Pi extension get authentication credentials?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:4"
+      ],
+      "exact_top": [
+        "README.md:4",
+        "docs/pi-extension-architecture.md:4",
+        "docs/pi-extension-architecture.md:2",
+        "docs/pi-extension-architecture.md:5",
+        "docs/pi-extension-architecture.md:1"
+      ]
+    },
+    {
+      "query": "Can workspace configuration override the memory service URL or tenant?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:5"
+      ],
+      "exact_top": [
+        "docs/pi-extension-architecture.md:3",
+        "docs/mcp-service-architecture.md:0",
+        "docs/mcp-service-architecture.md:41",
+        "docs/pi-extension-architecture.md:6",
+        "docs/mcp-service-architecture.md:7"
+      ]
+    },
+    {
+      "query": "How does automatic recall prevent stored prompt injection?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:7"
+      ],
+      "exact_top": [
+        "docs/pi-extension-architecture.md:7",
+        "ROADMAP.md:10",
+        "docs/pi-extension-architecture.md:8",
+        "docs/pi-extension-architecture.md:10",
+        "docs/pi-extension-architecture.md:2"
+      ]
+    },
+    {
+      "query": "Which data does automatic journal capture exclude?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:8"
+      ],
+      "exact_top": [
+        "docs/pi-extension-architecture.md:8",
+        "ROADMAP.md:10",
+        "docs/pi-extension-architecture.md:7",
+        "docs/mcp-service-architecture.md:43",
+        "docs/mcp-service-architecture.md:33"
+      ]
+    },
+    {
+      "query": "How does the extension choose a project for the current directory?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:5",
+        "docs/pi-extension-architecture.md:6"
+      ],
+      "exact_top": [
+        "docs/pi-extension-architecture.md:6",
+        "docs/pi-extension-architecture.md:5",
+        "docs/mcp-service-architecture.md:13",
+        "docs/pi-extension-architecture.md:4",
+        "README.md:1"
+      ]
+    },
+    {
+      "query": "Which command repairs a missing local binding after a partial scope change?",
+      "relevant": [
+        "docs/pi-extension-architecture.md:9"
+      ],
+      "exact_top": [
+        "ROADMAP.md:9",
+        "docs/pi-extension-architecture.md:9",
+        "docs/mcp-service-architecture.md:41",
+        "docs/pi-extension-architecture.md:3",
+        "docs/pi-extension-architecture.md:6"
+      ]
+    },
+    {
+      "query": "When does deleting a memory document require user confirmation?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:40"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:40",
+        "docs/mcp-service-architecture.md:29",
+        "docs/pi-extension-architecture.md:10",
+        "ROADMAP.md:9",
+        "ROADMAP.md:10"
+      ]
+    },
+    {
+      "query": "How are concurrent document revision numbers kept monotonic?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:20"
+      ],
+      "exact_top": [
+        "ROADMAP.md:4",
+        "docs/mcp-service-architecture.md:15",
+        "docs/mcp-service-architecture.md:20",
+        "docs/mcp-service-architecture.md:14",
+        "docs/mcp-service-architecture.md:39"
+      ]
+    },
+    {
+      "query": "How are lexical and vector search rankings combined?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:25"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:25",
+        "docs/mcp-service-architecture.md:24",
+        "docs/mcp-service-architecture.md:23",
+        "docs/mcp-service-architecture.md:26",
+        "ROADMAP.md:5"
+      ]
+    },
+    {
+      "query": "What views can memory_read return?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:38"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:38",
+        "docs/mcp-service-architecture.md:42",
+        "README.md:3",
+        "docs/mcp-service-architecture.md:37",
+        "docs/pi-extension-architecture.md:9"
+      ]
+    },
+    {
+      "query": "Why does the vector index use database IDs instead of hashed UUIDs?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:4"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:4",
+        "docs/mcp-service-architecture.md:24",
+        "docs/mcp-service-architecture.md:31",
+        "docs/mcp-service-architecture.md:21",
+        "docs/mcp-service-architecture.md:16"
+      ]
+    },
+    {
+      "query": "Does workspace membership automatically grant project access?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:7"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:7",
+        "docs/pi-extension-architecture.md:6",
+        "docs/mcp-service-architecture.md:41",
+        "docs/pi-extension-architecture.md:5",
+        "docs/mcp-service-architecture.md:6"
+      ]
+    },
+    {
+      "query": "How are unauthorized backlink sources kept hidden?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:17"
+      ],
+      "exact_top": [
+        "docs/pi-extension-architecture.md:7",
+        "docs/mcp-service-architecture.md:26",
+        "docs/mcp-service-architecture.md:43",
+        "docs/mcp-service-architecture.md:17",
+        "docs/mcp-service-architecture.md:27"
+      ]
+    },
+    {
+      "query": "What must happen when the retrieval profile changes?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:9"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:9",
+        "docs/mcp-service-architecture.md:24",
+        "ROADMAP.md:7",
+        "ROADMAP.md:6",
+        "ROADMAP.md:10"
+      ]
+    },
+    {
+      "query": "How does the service prevent tenant context from leaking through pooled connections?",
+      "relevant": [
+        "docs/mcp-service-architecture.md:28"
+      ],
+      "exact_top": [
+        "docs/mcp-service-architecture.md:28",
+        "ROADMAP.md:3",
+        "docs/mcp-service-architecture.md:34",
+        "README.md:2",
+        "docs/mcp-service-architecture.md:7"
+      ]
+    },
+    {
+      "query": "What work remains for Pi context integration?",
+      "relevant": [
+        "ROADMAP.md:8"
+      ],
+      "exact_top": [
+        "ROADMAP.md:8",
+        "docs/pi-extension-architecture.md:0",
+        "docs/pi-extension-architecture.md:2",
+        "docs/pi-extension-architecture.md:1",
+        "docs/pi-extension-architecture.md:11"
+      ]
+    }
+  ]
+}

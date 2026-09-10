@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "base": "project-docs-corpus.json",
+  "documents": ["service/benchmarks/operational-memories.md"],
+  "queries": [
+    {
+      "query": "When should an API deployment be rolled back?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Production deployment"}]
+    },
+    {
+      "query": "What caused valid sessions to fail after signing key rotation?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Authentication incident"}]
+    },
+    {
+      "query": "What happens when a charge idempotency key is reused with different content?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Billing idempotency"}]
+    },
+    {
+      "query": "How many database connections are reserved for maintenance?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Database connection limit"}]
+    },
+    {
+      "query": "How should operators recover a damaged vector index?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Search indexing recovery"}]
+    },
+    {
+      "query": "Can a pagination cursor be reused after filters change?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "API pagination contract"}]
+    },
+    {
+      "query": "How long does a customer export archive remain available?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Customer export retention"}]
+    },
+    {
+      "query": "Which command runs both extension and service tests?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Repository test commands"}]
+    },
+    {
+      "query": "May structured logs contain document content or raw prompts?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Logging privacy"}]
+    },
+    {
+      "query": "What must a retry check before storing an embedding result?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Worker retry policy"}]
+    },
+    {
+      "query": "Where should authoritative tenant state be stored?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Project conventions"}]
+    },
+    {
+      "query": "What should be disabled when memory context resolution is ambiguous?",
+      "relevant": [{"path": "service/benchmarks/operational-memories.md", "heading": "Emergency feature disable"}]
+    }
+  ]
+}

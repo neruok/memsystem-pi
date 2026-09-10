@@ -1,0 +1,10 @@
+{
+  "provider": "transformers",
+  "model": "Qwen/Qwen3-Embedding-4B",
+  "revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+  "dimension": 1536,
+  "device": "cuda",
+  "document_seconds_including_load": 9.18,
+  "warm_query_seconds": 0.081,
+  "cosine_similarity": 0.884586
+}

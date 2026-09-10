@@ -1,0 +1,90 @@
+{
+  "corpus": {
+    "dump": "data/simplewiki-latest-pages-articles-multistream.xml.bz2",
+    "articles_read": 10118,
+    "chunks": 25000,
+    "dimension": 1536,
+    "requests_per_case": 64,
+    "k": 10,
+    "seed": 7
+  },
+  "profile": {
+    "name": "qwen3-4b-1536-v1",
+    "turbovec_bits": 4,
+    "candidate_multiplier": 3
+  },
+  "setup": {
+    "database_load_seconds": 212.774,
+    "initial_index_rebuild_seconds": 177.853
+  },
+  "cases": [
+    {
+      "clients": 1,
+      "requests": 64,
+      "errors": 0,
+      "error_samples": [],
+      "throughput_qps": 3.123,
+      "latency_ms_p50": 310.913,
+      "latency_ms_p95": 372.831,
+      "latency_ms_p99": 382.601,
+      "recall_at_k_mean": 0.998437,
+      "recall_at_k_min": 0.9
+    },
+    {
+      "clients": 4,
+      "requests": 64,
+      "errors": 0,
+      "error_samples": [],
+      "throughput_qps": 10.123,
+      "latency_ms_p50": 381.985,
+      "latency_ms_p95": 448.151,
+      "latency_ms_p99": 512.823,
+      "recall_at_k_mean": 0.998437,
+      "recall_at_k_min": 0.9
+    },
+    {
+      "clients": 8,
+      "requests": 64,
+      "errors": 0,
+      "error_samples": [],
+      "throughput_qps": 18.194,
+      "latency_ms_p50": 404.65,
+      "latency_ms_p95": 511.724,
+      "latency_ms_p99": 527.723,
+      "recall_at_k_mean": 0.998437,
+      "recall_at_k_min": 0.9
+    },
+    {
+      "clients": 16,
+      "requests": 64,
+      "errors": 0,
+      "error_samples": [],
+      "throughput_qps": 27.682,
+      "latency_ms_p50": 457.376,
+      "latency_ms_p95": 684.537,
+      "latency_ms_p99": 707.878,
+      "recall_at_k_mean": 0.998437,
+      "recall_at_k_min": 0.9
+    },
+    {
+      "clients": 32,
+      "requests": 64,
+      "errors": 0,
+      "error_samples": [],
+      "throughput_qps": 43.274,
+      "latency_ms_p50": 570.549,
+      "latency_ms_p95": 889.959,
+      "latency_ms_p99": 922.117,
+      "recall_at_k_mean": 0.998437,
+      "recall_at_k_min": 0.9
+    }
+  ],
+  "search_during_rebuild": {
+    "rebuild_seconds": 64.223,
+    "requests": 21,
+    "errors": 0,
+    "error_samples": [],
+    "latency_ms_p95": 1024.967,
+    "recall_at_k_min": 0.9
+  }
+}

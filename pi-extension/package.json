@@ -1,0 +1,9 @@
+{
+  "name": "memsystem-pi-extension-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit --project ../tsconfig.json",
+    "test": "node --test ./test/*.test.ts"
+  }
+}
