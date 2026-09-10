@@ -880,6 +880,8 @@ def test_rebuild_replays_commits_and_swaps_generation(
 
     assert slot.current(claims.tenant_id) is rebuilt
     assert not owner.healthy
+    assert not owner.path.exists()
+    assert not owner.path.with_suffix(owner.path.suffix + ".lock").exists()
     assert rebuilt.generation == 2
     assert not rebuilt.index.contains(first_vector_id)
     assert rebuilt.index.contains(second_vector_id)
@@ -933,7 +935,7 @@ def test_rebuild_replays_commits_and_swaps_generation(
 
 
 def test_vector_search_uses_authorized_allowlist_and_handles_stale_ids(
-    database_url: str, context_records, tmp_path
+    database_url: str, context_records, tmp_path, monkeypatch
 ):
     claims = _claims(context_records)
     project_claims = _claims(context_records, workspace=True, project=True)
@@ -986,6 +988,13 @@ def test_vector_search_uses_authorized_allowlist_and_handles_stale_ids(
 
         assert [item.document_id for item in user_results] == [user_document.document_id]
         assert [item.document_id for item in project_results] == [project_document.document_id]
+
+        monkeypatch.setenv("MEMSYSTEM_VECTOR_ALLOWLIST_LIMIT", "1")
+        with tenant_transaction(connection, claims.tenant_id):
+            assert search_vector(
+                connection, project_claims, slot, [1.0] + [0.0] * 1535
+            ) == []
+        monkeypatch.delenv("MEMSYSTEM_VECTOR_ALLOWLIST_LIMIT")
 
         with tenant_transaction(connection, claims.tenant_id):
             connection.execute(

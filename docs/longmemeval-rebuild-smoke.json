@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "cpu_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+    "memory_bytes": 135019450368,
+    "postgres": "17.11 (Debian 17.11-1.pgdg12+2)",
+    "pgvector": "0.8.6",
+    "turbovec": "1.0.0",
+    "pyarrow": "25.0.1"
+  },
+  "dataset": {
+    "name": "mteb/LongMemEval",
+    "revision": "9dc1a8fdcf9b5676f87c2cdccac021988f6ff5af",
+    "corpus_rows": 237655,
+    "corpus_sha256": "3dfd1c8fb301fb3663416404c74fc378c90456695a7cf2f1c2723172d5b952b2",
+    "tasks": {
+      "knowledge_update": {
+        "queries": 78,
+        "qrels": 156
+      },
+      "multi_session": {
+        "queries": 133,
+        "qrels": 344
+      },
+      "single_session_assistant": {
+        "queries": 56,
+        "qrels": 56
+      },
+      "single_session_preference": {
+        "queries": 30,
+        "qrels": 30
+      },
+      "single_session_user": {
+        "queries": 70,
+        "qrels": 70
+      },
+      "temporal_reasoning": {
+        "queries": 133,
+        "qrels": 292
+      }
+    }
+  },
+  "profile": {
+    "name": "qwen3-4b-1536-v1",
+    "dimension": 1536,
+    "turbovec_bits": 4,
+    "allowlist_limit": null,
+    "benchmark_vectors": "deterministic clustered vectors; semantic labels are not used in this scale test",
+    "k": 10,
+    "seed": 7
+  },
+  "stages": [
+    {
+      "vectors": 10000,
+      "incremental_load_seconds": 39.793,
+      "index_rebuild_seconds": 15.257,
+      "index_bytes": 9454035,
+      "queries": 10,
+      "latency_ms_p50": 172.343,
+      "latency_ms_p95": 186.946,
+      "throughput_qps": 6.105,
+      "recall_at_k_mean": 1.0,
+      "recall_at_k_min": 1.0,
+      "latency_ms_samples": [
+        177.013,
+        172.54,
+        176.244,
+        179.159,
+        171.042,
+        130.281,
+        133.618,
+        132.553,
+        172.147,
+        193.318
+      ]
+    }
+  ],
+  "process_peak_rss_bytes": 671875072,
+  "source_sha256": {
+    "evaluator": "35e59ed69ee0eb6256efcf3f43dff41aba1871f8f20055f954aa9707a63aedc9",
+    "retrieval": "02965a44c7c99d313b218589130a489ee1309a387dfbe6755b8743c5e4caa0de",
+    "vector_index": "0faf26aebc47d16dbd365e4307dae588c00347ad5581ea4536a044552218205d"
+  }
+}

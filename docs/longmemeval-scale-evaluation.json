@@ -1,0 +1,160 @@
+{
+  "environment": {
+    "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "cpu_count": 32,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+    "memory_bytes": 135019450368,
+    "postgres": "17.11 (Debian 17.11-1.pgdg12+2)",
+    "pgvector": "0.8.6",
+    "turbovec": "1.0.0",
+    "pyarrow": "25.0.1"
+  },
+  "dataset": {
+    "name": "mteb/LongMemEval",
+    "revision": "9dc1a8fdcf9b5676f87c2cdccac021988f6ff5af",
+    "corpus_rows": 237655,
+    "corpus_sha256": "3dfd1c8fb301fb3663416404c74fc378c90456695a7cf2f1c2723172d5b952b2",
+    "tasks": {
+      "knowledge_update": {
+        "queries": 78,
+        "qrels": 156
+      },
+      "multi_session": {
+        "queries": 133,
+        "qrels": 344
+      },
+      "single_session_assistant": {
+        "queries": 56,
+        "qrels": 56
+      },
+      "single_session_preference": {
+        "queries": 30,
+        "qrels": 30
+      },
+      "single_session_user": {
+        "queries": 70,
+        "qrels": 70
+      },
+      "temporal_reasoning": {
+        "queries": 133,
+        "qrels": 292
+      }
+    }
+  },
+  "profile": {
+    "name": "qwen3-4b-1536-v1",
+    "dimension": 1536,
+    "turbovec_bits": 4,
+    "allowlist_limit": null,
+    "benchmark_vectors": "deterministic clustered vectors; semantic labels are not used in this scale test",
+    "k": 10,
+    "seed": 7
+  },
+  "stages": [
+    {
+      "vectors": 50000,
+      "incremental_load_seconds": 142.176,
+      "index_rebuild_seconds": 90.141,
+      "index_bytes": 40654035,
+      "queries": 20,
+      "latency_ms_p50": 697.657,
+      "latency_ms_p95": 794.822,
+      "throughput_qps": 1.558,
+      "recall_at_k_mean": 0.995,
+      "recall_at_k_min": 0.9,
+      "latency_ms_samples": [
+        495.31,
+        541.205,
+        519.639,
+        521.603,
+        499.991,
+        558.078,
+        591.451,
+        495.135,
+        536.07,
+        731.952,
+        715.658,
+        711.554,
+        709.227,
+        705.487,
+        792.475,
+        839.413,
+        765.364,
+        700.949,
+        713.608,
+        694.364
+      ]
+    },
+    {
+      "vectors": 100000,
+      "incremental_load_seconds": 81.522,
+      "index_rebuild_seconds": 174.815,
+      "index_bytes": 79666515,
+      "queries": 20,
+      "latency_ms_p50": 1341.283,
+      "latency_ms_p95": 1514.299,
+      "throughput_qps": 0.729,
+      "recall_at_k_mean": 1.0,
+      "recall_at_k_min": 1.0,
+      "latency_ms_samples": [
+        1166.955,
+        1393.8,
+        1363.055,
+        1295.739,
+        1284.785,
+        1409.724,
+        1460.977,
+        1319.511,
+        1599.057,
+        1491.597,
+        1289.529,
+        1291.858,
+        1448.738,
+        1302.553,
+        1293.45,
+        1509.838,
+        1492.859,
+        1305.887,
+        1312.664,
+        1389.92
+      ]
+    },
+    {
+      "vectors": 200000,
+      "incremental_load_seconds": 162.968,
+      "index_rebuild_seconds": 427.159,
+      "index_bytes": 157666515,
+      "queries": 20,
+      "latency_ms_p50": 3717.212,
+      "latency_ms_p95": 4573.362,
+      "throughput_qps": 0.259,
+      "recall_at_k_mean": 1.0,
+      "recall_at_k_min": 1.0,
+      "latency_ms_samples": [
+        4054.561,
+        3594.27,
+        3551.589,
+        3569.538,
+        3599.996,
+        3637.056,
+        3570.826,
+        3583.673,
+        3563.491,
+        3633.412,
+        3848.068,
+        3773.755,
+        3773.618,
+        3660.807,
+        3933.716,
+        4636.433,
+        4366.194,
+        4570.043,
+        4048.93,
+        4144.782
+      ]
+    }
+  ],
+  "process_peak_rss_bytes": 6839037952,
+  "evaluator_sha256": "584dff6f0c96484f429773ccbdf9ddce59d60180c02dcaeb59ef5b882344660b"
+}

@@ -442,12 +442,12 @@ def rebuild_index(
         candidate = TurboVecIndex(tenant_id, temporary_path, generation)
         with tenant_transaction(connection, tenant_id):
             register_vector(connection)
-            ready = _ready_vectors(connection, tenant_id)
-            if ready:
-                candidate.add_many(
-                    [vector_id for vector_id, _, _ in ready],
-                    np.vstack([embedding.to_numpy() for _, embedding, _ in ready]),
-                )
+            with _ready_vectors(connection, tenant_id) as ready:
+                while batch := ready.fetchmany(5_000):
+                    candidate.add_many(
+                        [vector_id for vector_id, _, _ in batch],
+                        np.vstack([embedding.to_numpy() for _, embedding, _ in batch]),
+                    )
         candidate.prepare()
         candidate.sync()
         candidate.close()
@@ -552,6 +552,9 @@ def rebuild_index(
             previous = slot.swap(candidate)
             published = True
             previous.close()
+            previous.path.unlink(missing_ok=True)
+            previous.path.with_suffix(previous.path.suffix + ".lock").unlink(missing_ok=True)
+            _fsync_directory(previous.path.parent)
         finally:
             unlock_index_projection_session(connection, tenant_id)
     finally:
@@ -613,7 +616,8 @@ def _fsync_directory(directory: Path) -> None:
 
 
 def _ready_vectors(connection: Connection, tenant_id: UUID):
-    return connection.execute(
+    cursor = connection.cursor(name=f"ready_vectors_{uuid4().hex}")
+    cursor.execute(
         """SELECT c.vector_id, c.embedding, r.revision
            FROM chunks c
            JOIN documents d
@@ -636,7 +640,8 @@ def _ready_vectors(connection: Connection, tenant_id: UUID):
             ACTIVE_PROFILE.embedding_version,
             ACTIVE_PROFILE.embedding_dimension,
         ),
-    ).fetchall()
+    )
+    return cursor
 
 
 def _ready_vector(connection: Connection, tenant_id: UUID, vector_id: int):

@@ -7,7 +7,6 @@ import json
 import os
 from pathlib import Path
 import platform
-import resource
 import tempfile
 import time
 from uuid import uuid4
@@ -21,7 +20,7 @@ from memsystem.chunking import CHUNK_PROFILE
 from memsystem.context_token import ContextTokenClaims
 from memsystem.database import tenant_transaction
 from memsystem.embeddings import ACTIVE_PROFILE
-from memsystem.evaluation import _machine, make_corpus
+from memsystem.evaluation import _machine, _peak_rss_bytes, make_corpus
 from memsystem.retrieval import search_vector
 from memsystem.vector_index import IndexSlot, TurboVecIndex, rebuild_index
 
@@ -279,8 +278,16 @@ def benchmark(
             "seed": seed,
         },
         "stages": stages,
-        "process_peak_rss_bytes": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * 1024,
-        "evaluator_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "process_peak_rss_bytes": _peak_rss_bytes(),
+        "source_sha256": {
+            "evaluator": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            "retrieval": hashlib.sha256(
+                Path(__file__).with_name("retrieval.py").read_bytes()
+            ).hexdigest(),
+            "vector_index": hashlib.sha256(
+                Path(__file__).with_name("vector_index.py").read_bytes()
+            ).hexdigest(),
+        },
     }
 
 

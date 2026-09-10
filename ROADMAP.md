@@ -137,6 +137,8 @@ Completed on 2026-09-10. The evaluation separates semantic quality from storage 
 - [x] Measure broad and scattered allowlists.
 - [x] Repeat synthetic engine measurements across three deterministic seeds.
 - [x] Measure scaling at 25,000 vectors across three seeds. Unchanged 4-bit settings miss full and broad recall targets.
+- [x] Measure MTEB LongMemEval-shaped storage at 50,000, 100,000, and 200,000 vectors.
+- [x] Replace the fixed allowlist ceiling with an optional runtime limit.
 - [x] Evaluate exact reranking of TurboVec candidates before larger-scale selection.
 - [x] Implement runtime exact candidate reranking with authorization-path regression tests.
 - [x] Measure the full authorized reranking path with 25,000 Wikipedia chunks.

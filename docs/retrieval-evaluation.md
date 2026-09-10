@@ -419,7 +419,31 @@ The MTEB [LongMemEval](https://huggingface.co/datasets/mteb/LongMemEval) convers
 
 ConvoMem supplies 75,336 questions with message evidence and distractors. LoCoMo supplies 5,882 passages and 1,964 queries. Both use CC BY-NC 4.0.
 
-Use the upstream MIT LongMemEval Cleaned-S split. Apply the ReMe corrections only after license clarification.
+Use the MTEB LongMemEval conversion. It gives the evaluator standard corpus, query, and relevance-label files.
+
+## LongMemEval scale check
+
+The scale check uses the MTEB LongMemEval corpus at revision `9dc1a8fdcf9b5676f87c2cdccac021988f6ff5af`. The corpus contains 237,655 rows.
+
+This check uses deterministic clustered vectors. It measures storage and retrieval scale but does not measure LongMemEval semantic relevance.
+
+| Vectors | p50 | p95 | Throughput | Minimum recall at 10 | Index size | Rebuild |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 50,000 | 697.657 ms | 794.822 ms | 1.558 queries/s | 0.900 | 40,654,035 bytes | 90.141 s |
+| 100,000 | 1,341.283 ms | 1,514.299 ms | 0.729 queries/s | 1.000 | 79,666,515 bytes | 174.815 s |
+| 200,000 | 3,717.212 ms | 4,573.362 ms | 0.259 queries/s | 1.000 | 157,666,515 bytes | 427.159 s |
+
+The test used no allowlist limit. The 200,000-vector run completed without fallback or errors.
+
+The index size scales linearly at about 790 bytes per vector. Whole-path retrieval latency increases sharply with the authorized vector count.
+
+The scale run reached 6,839,037,952 bytes of peak RSS. This value includes full-precision source vectors, benchmark data, and a buffered database result.
+
+A later fix changed rebuild reads to a server-side cursor and removed old generation files after publication. A 10,000-vector post-fix check reached 671,875,072 bytes and passed all retrieval checks.
+
+Do not use the old 200,000-vector RSS value as a current capacity estimate. Run a new large memory check only when a capacity decision requires it.
+
+Stored results: [scale run](longmemeval-scale-evaluation.json) and [post-fix rebuild check](longmemeval-rebuild-smoke.json).
 
 ## Decision
 
@@ -435,7 +459,9 @@ Use these provisional acceptance targets for the 10,000-vector corpus:
 - p95 vector search latency must not exceed 10 ms
 - TurboVec process RSS growth must not exceed 128 MiB
 
-The service still has its inherited 100,000-identifier allowlist guard. This benchmark does not validate that limit.
+The service has no default allowlist ceiling. An unbounded query materializes every authorized vector identifier and can use substantial memory and time.
+
+Set `MEMSYSTEM_VECTOR_ALLOWLIST_LIMIT` to a positive runtime-specific ceiling for deployed services. On this host, 50,000 vectors is the largest measured size below the one-second p95 target.
 
 Recheck the profile when p95 latency exceeds 10 ms or sampled recall falls below 0.85. Test sharding only after one threshold fails.
 

@@ -94,6 +94,11 @@ uv run --project service python -m memsystem.concurrency_evaluation \
 uv run --project service --group qwen python -m memsystem.mcp_concurrency_evaluation \
   --items 25000 --requests 64 \
   --output docs/mcp-concurrency-evaluation.json
+service/benchmarks/download-longmemeval.sh
+env -u MEMSYSTEM_VECTOR_ALLOWLIST_LIMIT \
+  uv run --project service python -m memsystem.longmemeval_scale_evaluation \
+  --sizes 50000 100000 200000 \
+  --output docs/longmemeval-scale-evaluation.json
 ```
 
 See [retrieval evaluation](docs/retrieval-evaluation.md) for results and limits.
