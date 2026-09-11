@@ -1,0 +1,248 @@
+{
+  "environment": {
+    "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "pyarrow": "25.0.1",
+    "backend": "qwen-transformers",
+    "torch": "2.11.0",
+    "transformers": "5.15.1",
+    "device": "cuda",
+    "dtype": "float16",
+    "model_revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "resolved_model_revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "cuda_runtime": "13.0",
+    "nvidia_driver": "NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  610.43.02  Release Build  (root@pve)  Thu Jul 16 22:12:24 CDT 2026",
+    "evaluator_sha256": "61793d57e7e70e0b71bea6fddec52c4147bef7b5db5486db5a32bc05d448171e"
+  },
+  "dataset": {
+    "name": "Salesforce/ConvoMem pooled-persona message retrieval",
+    "revision": "e3e9b39115b02346824c70d349350de738f8be41-personas-3-q20-f40-s7",
+    "corpus_rows": 21094,
+    "queries": 360,
+    "qrels": 431,
+    "corpus_sha256": "8136de70e4d97645747bb1f3b97b55213c6a7c2061f3db4493bf3581a0f3b8a8",
+    "labels_sha256": "7680822798c2ff22050737fc3b6fc4a79702c70e544c964278b7997b03df5990",
+    "tasks": [
+      "user_evidence",
+      "assistant_facts",
+      "changing_evidence",
+      "changing_evidence_history",
+      "preference_evidence",
+      "implicit_connection"
+    ]
+  },
+  "embedding": {
+    "model": "Qwen/Qwen3-Embedding-4B",
+    "dimension": 1536,
+    "seconds": 5.309,
+    "document_cache": "/root/.cache/memsystem/workload/ad9afb107ab4e519c93360f491f882baab3299e4330b8da60eeb0b96c938122d.npy",
+    "document_cache_hit": true,
+    "batch_size": 16,
+    "batch_token_budget": 8192,
+    "max_length": 8192,
+    "query_instruction": "Given a question about a user's conversation history, retrieve relevant conversation messages that answer the question"
+  },
+  "metrics": {
+    "overall": {
+      "hit_rate_at_50": 0.702778,
+      "mean_recall_at_50": 0.675,
+      "mean_reciprocal_rank_at_50": 0.373855,
+      "mean_ndcg_at_50": 0.432938,
+      "reference_answer_token_coverage_at_50": 0.375,
+      "mean_foreign_persona_fraction_at_50": 0.354
+    },
+    "candidate_cutoffs": {
+      "10": {
+        "overall": {
+          "hit_rate_at_10": 0.577778,
+          "mean_recall_at_10": 0.539352,
+          "mean_reciprocal_rank_at_10": 0.367389,
+          "mean_ndcg_at_10": 0.400243
+        },
+        "tasks": {
+          "user_evidence": {
+            "hit_rate_at_10": 0.833333,
+            "mean_recall_at_10": 0.833333,
+            "mean_reciprocal_rank_at_10": 0.616429,
+            "mean_ndcg_at_10": 0.670403
+          },
+          "assistant_facts": {
+            "hit_rate_at_10": 0.983333,
+            "mean_recall_at_10": 0.963889,
+            "mean_reciprocal_rank_at_10": 0.862659,
+            "mean_ndcg_at_10": 0.878715
+          },
+          "changing_evidence": {
+            "hit_rate_at_10": 0.45,
+            "mean_recall_at_10": 0.45,
+            "mean_reciprocal_rank_at_10": 0.147262,
+            "mean_ndcg_at_10": 0.218503
+          },
+          "changing_evidence_history": {
+            "hit_rate_at_10": 0.8,
+            "mean_recall_at_10": 0.605556,
+            "mean_reciprocal_rank_at_10": 0.400668,
+            "mean_ndcg_at_10": 0.409758
+          },
+          "preference_evidence": {
+            "hit_rate_at_10": 0.25,
+            "mean_recall_at_10": 0.25,
+            "mean_reciprocal_rank_at_10": 0.129259,
+            "mean_ndcg_at_10": 0.157239
+          },
+          "implicit_connection": {
+            "hit_rate_at_10": 0.15,
+            "mean_recall_at_10": 0.133333,
+            "mean_reciprocal_rank_at_10": 0.048056,
+            "mean_ndcg_at_10": 0.066841
+          }
+        }
+      },
+      "30": {
+        "overall": {
+          "hit_rate_at_30": 0.675,
+          "mean_recall_at_30": 0.644444,
+          "mean_reciprocal_rank_at_30": 0.373121,
+          "mean_ndcg_at_30": 0.426893
+        },
+        "tasks": {
+          "user_evidence": {
+            "hit_rate_at_30": 0.916667,
+            "mean_recall_at_30": 0.916667,
+            "mean_reciprocal_rank_at_30": 0.621119,
+            "mean_ndcg_at_30": 0.690037
+          },
+          "assistant_facts": {
+            "hit_rate_at_30": 1.0,
+            "mean_recall_at_30": 0.986111,
+            "mean_reciprocal_rank_at_30": 0.863452,
+            "mean_ndcg_at_30": 0.884097
+          },
+          "changing_evidence": {
+            "hit_rate_at_30": 0.683333,
+            "mean_recall_at_30": 0.683333,
+            "mean_reciprocal_rank_at_30": 0.161415,
+            "mean_ndcg_at_30": 0.27476
+          },
+          "changing_evidence_history": {
+            "hit_rate_at_30": 0.933333,
+            "mean_recall_at_30": 0.780556,
+            "mean_reciprocal_rank_at_30": 0.408793,
+            "mean_ndcg_at_30": 0.460867
+          },
+          "preference_evidence": {
+            "hit_rate_at_30": 0.35,
+            "mean_recall_at_30": 0.35,
+            "mean_reciprocal_rank_at_30": 0.135223,
+            "mean_ndcg_at_30": 0.181212
+          },
+          "implicit_connection": {
+            "hit_rate_at_30": 0.166667,
+            "mean_recall_at_30": 0.15,
+            "mean_reciprocal_rank_at_30": 0.048722,
+            "mean_ndcg_at_30": 0.070387
+          }
+        }
+      },
+      "50": {
+        "overall": {
+          "hit_rate_at_50": 0.702778,
+          "mean_recall_at_50": 0.675,
+          "mean_reciprocal_rank_at_50": 0.373855,
+          "mean_ndcg_at_50": 0.432938
+        },
+        "tasks": {
+          "user_evidence": {
+            "hit_rate_at_50": 0.916667,
+            "mean_recall_at_50": 0.916667,
+            "mean_reciprocal_rank_at_50": 0.621119,
+            "mean_ndcg_at_50": 0.690037
+          },
+          "assistant_facts": {
+            "hit_rate_at_50": 1.0,
+            "mean_recall_at_50": 0.986111,
+            "mean_reciprocal_rank_at_50": 0.863452,
+            "mean_ndcg_at_50": 0.884097
+          },
+          "changing_evidence": {
+            "hit_rate_at_50": 0.75,
+            "mean_recall_at_50": 0.75,
+            "mean_reciprocal_rank_at_50": 0.163214,
+            "mean_ndcg_at_50": 0.287432
+          },
+          "changing_evidence_history": {
+            "hit_rate_at_50": 0.95,
+            "mean_recall_at_50": 0.813889,
+            "mean_reciprocal_rank_at_50": 0.409164,
+            "mean_ndcg_at_50": 0.468648
+          },
+          "preference_evidence": {
+            "hit_rate_at_50": 0.4,
+            "mean_recall_at_50": 0.4,
+            "mean_reciprocal_rank_at_50": 0.136615,
+            "mean_ndcg_at_50": 0.190788
+          },
+          "implicit_connection": {
+            "hit_rate_at_50": 0.2,
+            "mean_recall_at_50": 0.183333,
+            "mean_reciprocal_rank_at_50": 0.049569,
+            "mean_ndcg_at_50": 0.076628
+          }
+        }
+      }
+    },
+    "overall_weighting": "one equal weight per query",
+    "tasks": {
+      "user_evidence": {
+        "hit_rate_at_50": 0.916667,
+        "mean_recall_at_50": 0.916667,
+        "mean_reciprocal_rank_at_50": 0.621119,
+        "mean_ndcg_at_50": 0.690037,
+        "reference_answer_token_coverage_at_50": 0.583333,
+        "mean_foreign_persona_fraction_at_50": 0.331667
+      },
+      "assistant_facts": {
+        "hit_rate_at_50": 1.0,
+        "mean_recall_at_50": 0.986111,
+        "mean_reciprocal_rank_at_50": 0.863452,
+        "mean_ndcg_at_50": 0.884097,
+        "reference_answer_token_coverage_at_50": 0.5,
+        "mean_foreign_persona_fraction_at_50": 0.33
+      },
+      "changing_evidence": {
+        "hit_rate_at_50": 0.75,
+        "mean_recall_at_50": 0.75,
+        "mean_reciprocal_rank_at_50": 0.163214,
+        "mean_ndcg_at_50": 0.287432,
+        "reference_answer_token_coverage_at_50": 0.583333,
+        "mean_foreign_persona_fraction_at_50": 0.396333
+      },
+      "changing_evidence_history": {
+        "hit_rate_at_50": 0.95,
+        "mean_recall_at_50": 0.813889,
+        "mean_reciprocal_rank_at_50": 0.409164,
+        "mean_ndcg_at_50": 0.468648,
+        "reference_answer_token_coverage_at_50": 0.583333,
+        "mean_foreign_persona_fraction_at_50": 0.396333
+      },
+      "preference_evidence": {
+        "hit_rate_at_50": 0.4,
+        "mean_recall_at_50": 0.4,
+        "mean_reciprocal_rank_at_50": 0.136615,
+        "mean_ndcg_at_50": 0.190788,
+        "reference_answer_token_coverage_at_50": 0.0,
+        "mean_foreign_persona_fraction_at_50": 0.259
+      },
+      "implicit_connection": {
+        "hit_rate_at_50": 0.2,
+        "mean_recall_at_50": 0.183333,
+        "mean_reciprocal_rank_at_50": 0.049569,
+        "mean_ndcg_at_50": 0.076628,
+        "reference_answer_token_coverage_at_50": 0.0,
+        "mean_foreign_persona_fraction_at_50": 0.410667
+      }
+    }
+  },
+  "process_peak_rss_bytes": 16853377024
+}

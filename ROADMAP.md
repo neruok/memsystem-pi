@@ -138,6 +138,10 @@ Completed on 2026-09-10. The evaluation separates semantic quality from storage 
 - [x] Repeat synthetic engine measurements across three deterministic seeds.
 - [x] Measure scaling at 25,000 vectors across three seeds. Unchanged 4-bit settings miss full and broad recall targets.
 - [x] Measure MTEB LongMemEval-shaped storage at 50,000, 100,000, and 200,000 vectors.
+- [x] Reject LongMemEval semantic relevance after a workload-mismatch pilot.
+- [x] Measure atomic operational memories with same-topic persona distractors.
+- [x] Measure pooled-persona ConvoMem message retrieval at 10, 30, and 50 candidates.
+- [x] Separate current-update retrieval from historical-evidence retrieval.
 - [x] Replace the fixed allowlist ceiling with an optional runtime limit.
 - [x] Evaluate exact reranking of TurboVec candidates before larger-scale selection.
 - [x] Implement runtime exact candidate reranking with authorization-path regression tests.
@@ -148,7 +152,7 @@ Completed on 2026-09-10. The evaluation separates semantic quality from storage 
 - [x] Verify recall while an index rebuild runs.
 - [x] Measure authenticated MCP concurrency with the Qwen provider.
 
-Qwen3-Embedding-4B meets the semantic targets on the labeled project and operational corpora. Exact reranking makes TurboVec 4-bit meet the scaling recall target. The direct retrieval path stays below the one-second p95 target at 32 clients. The MCP path peaks at 5.810 queries per second and misses the p95 target. See [retrieval evaluation](docs/retrieval-evaluation.md).
+Qwen3-Embedding-4B meets the semantic targets on the labeled project and atomic operational corpora. Pooled-persona ConvoMem results remain weak for preference, implicit-connection, and current-update tasks. Exact reranking makes TurboVec 4-bit meet the scaling recall target. The direct retrieval path stays below the one-second p95 target at 32 clients. The MCP path peaks at 5.810 queries per second and misses the p95 target. See [retrieval evaluation](docs/retrieval-evaluation.md).
 
 Exit criteria:
 
@@ -167,6 +171,7 @@ Exit criteria:
 - [ ] Attach context tokens outside model-visible arguments.
 - [ ] Implement `/memory status`, `/memory scope`, and `/memory target`.
 - [ ] Add retry, cancellation, reconnect, and shutdown tests.
+- [ ] Run grounded-answer accuracy after the Pi answer path exists.
 
 Exit criteria:
 

@@ -94,6 +94,16 @@ uv run --project service python -m memsystem.concurrency_evaluation \
 uv run --project service --group qwen python -m memsystem.mcp_concurrency_evaluation \
   --items 25000 --requests 64 \
   --output docs/mcp-concurrency-evaluation.json
+uv run --project service python service/benchmarks/build-operational-workload.py
+uv run --project service --group qwen python -m memsystem.workload_evaluation \
+  --dataset data/operational-memory-workload \
+  --tasks atomic_fact current_update update_history \
+  --backend qwen --model Qwen/Qwen3-Embedding-4B \
+  --dimensions 1536 --device cuda --batch-size 16 \
+  --task "Given a question about a user's memory, retrieve relevant atomic memories that answer the question" \
+  --k 10 --output docs/operational-memory-workload-evaluation.json
+uv run --project service python service/benchmarks/build-convomem-pilot.py \
+  --output data/convomem-workload
 service/benchmarks/download-longmemeval.sh
 env -u MEMSYSTEM_VECTOR_ALLOWLIST_LIMIT \
   uv run --project service python -m memsystem.longmemeval_scale_evaluation \

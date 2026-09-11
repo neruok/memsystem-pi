@@ -1,0 +1,283 @@
+{
+  "environment": {
+    "platform": "Linux-7.0.14-5-pve-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "pyarrow": "25.0.1",
+    "backend": "qwen-transformers",
+    "torch": "2.11.0",
+    "transformers": "5.15.1",
+    "device": "cuda",
+    "dtype": "float16",
+    "model_revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "resolved_model_revision": "5cf2132abc99cad020ac570b19d031efec650f2b",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "cuda_runtime": "13.0",
+    "nvidia_driver": "NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  610.43.02  Release Build  (root@pve)  Thu Jul 16 22:12:24 CDT 2026",
+    "evaluator_sha256": "61793d57e7e70e0b71bea6fddec52c4147bef7b5db5486db5a32bc05d448171e"
+  },
+  "dataset": {
+    "name": "memsystem atomic operational memory workload",
+    "revision": "1",
+    "corpus_rows": 14,
+    "queries": 8,
+    "qrels": 10,
+    "corpus_sha256": "c71ae49512b7742b5a701d192bf4acca3ca98b3c00d4da9a822324f1f157cdc4",
+    "labels_sha256": "a65314033e569e5805282ebf8bc6c21c9ad0156f4af3836f2677cef07b786686",
+    "tasks": [
+      "atomic_fact",
+      "current_update",
+      "update_history"
+    ]
+  },
+  "embedding": {
+    "model": "Qwen/Qwen3-Embedding-4B",
+    "dimension": 1536,
+    "seconds": 0.857,
+    "document_cache": "/root/.cache/memsystem/workload/fca5adf861456ed3a85bf5c8e81b19193b1047986fb24d89f8c0e0abf4f6b6d0.npy",
+    "document_cache_hit": true,
+    "batch_size": 16,
+    "batch_token_budget": 8192,
+    "max_length": 8192,
+    "query_instruction": "Given a question about a user's memory, retrieve relevant atomic memories that answer the question"
+  },
+  "metrics": {
+    "overall": {
+      "hit_rate_at_10": 1.0,
+      "mean_recall_at_10": 1.0,
+      "mean_reciprocal_rank_at_10": 0.9375,
+      "mean_ndcg_at_10": 0.953866,
+      "reference_answer_token_coverage_at_10": 1.0,
+      "mean_foreign_persona_fraction_at_10": 0.45
+    },
+    "candidate_cutoffs": {
+      "10": {
+        "overall": {
+          "hit_rate_at_10": 1.0,
+          "mean_recall_at_10": 1.0,
+          "mean_reciprocal_rank_at_10": 0.9375,
+          "mean_ndcg_at_10": 0.953866
+        },
+        "tasks": {
+          "atomic_fact": {
+            "hit_rate_at_10": 1.0,
+            "mean_recall_at_10": 1.0,
+            "mean_reciprocal_rank_at_10": 1.0,
+            "mean_ndcg_at_10": 1.0
+          },
+          "current_update": {
+            "hit_rate_at_10": 1.0,
+            "mean_recall_at_10": 1.0,
+            "mean_reciprocal_rank_at_10": 0.75,
+            "mean_ndcg_at_10": 0.815465
+          },
+          "update_history": {
+            "hit_rate_at_10": 1.0,
+            "mean_recall_at_10": 1.0,
+            "mean_reciprocal_rank_at_10": 1.0,
+            "mean_ndcg_at_10": 1.0
+          }
+        }
+      }
+    },
+    "overall_weighting": "one equal weight per query",
+    "tasks": {
+      "atomic_fact": {
+        "hit_rate_at_10": 1.0,
+        "mean_recall_at_10": 1.0,
+        "mean_reciprocal_rank_at_10": 1.0,
+        "mean_ndcg_at_10": 1.0,
+        "reference_answer_token_coverage_at_10": 1.0,
+        "mean_foreign_persona_fraction_at_10": 0.5
+      },
+      "current_update": {
+        "hit_rate_at_10": 1.0,
+        "mean_recall_at_10": 1.0,
+        "mean_reciprocal_rank_at_10": 0.75,
+        "mean_ndcg_at_10": 0.815465,
+        "reference_answer_token_coverage_at_10": 1.0,
+        "mean_foreign_persona_fraction_at_10": 0.4
+      },
+      "update_history": {
+        "hit_rate_at_10": 1.0,
+        "mean_recall_at_10": 1.0,
+        "mean_reciprocal_rank_at_10": 1.0,
+        "mean_ndcg_at_10": 1.0,
+        "reference_answer_token_coverage_at_10": 1.0,
+        "mean_foreign_persona_fraction_at_10": 0.4
+      }
+    }
+  },
+  "queries": [
+    {
+      "id": "alice-diet",
+      "task": "atomic_fact",
+      "query": "Which food must Alice avoid?",
+      "relevant": [
+        "alice-diet"
+      ],
+      "first_relevant_rank_at_10": 1,
+      "top": [
+        "alice-diet",
+        "bob-diet",
+        "carol-diet",
+        "alice-meeting-old",
+        "alice-meeting-current",
+        "alice-editor-current",
+        "alice-editor-old",
+        "carol-meeting",
+        "alice-region",
+        "carol-editor"
+      ]
+    },
+    {
+      "id": "bob-diet",
+      "task": "atomic_fact",
+      "query": "Which food must Bob avoid?",
+      "relevant": [
+        "bob-diet"
+      ],
+      "first_relevant_rank_at_10": 1,
+      "top": [
+        "bob-diet",
+        "alice-diet",
+        "carol-diet",
+        "bob-meeting",
+        "alice-meeting-old",
+        "bob-editor",
+        "alice-meeting-current",
+        "carol-meeting",
+        "alice-editor-current",
+        "bob-region"
+      ]
+    },
+    {
+      "id": "alice-region",
+      "task": "atomic_fact",
+      "query": "Where does Alice deploy the billing service?",
+      "relevant": [
+        "alice-region"
+      ],
+      "first_relevant_rank_at_10": 1,
+      "top": [
+        "alice-region",
+        "bob-region",
+        "carol-region",
+        "alice-meeting-old",
+        "alice-meeting-current",
+        "alice-editor-current",
+        "alice-editor-old",
+        "alice-diet",
+        "carol-diet",
+        "carol-meeting"
+      ]
+    },
+    {
+      "id": "carol-region",
+      "task": "atomic_fact",
+      "query": "Where does Carol deploy the billing service?",
+      "relevant": [
+        "carol-region"
+      ],
+      "first_relevant_rank_at_10": 1,
+      "top": [
+        "carol-region",
+        "bob-region",
+        "alice-region",
+        "carol-meeting",
+        "carol-diet",
+        "alice-meeting-old",
+        "carol-editor",
+        "alice-meeting-current",
+        "bob-meeting",
+        "alice-editor-current"
+      ]
+    },
+    {
+      "id": "alice-editor-current",
+      "task": "current_update",
+      "query": "Which video editor does Alice use now?",
+      "relevant": [
+        "alice-editor-current"
+      ],
+      "first_relevant_rank_at_10": 1,
+      "top": [
+        "alice-editor-current",
+        "alice-editor-old",
+        "bob-editor",
+        "carol-editor",
+        "alice-meeting-current",
+        "alice-diet",
+        "alice-meeting-old",
+        "carol-diet",
+        "alice-region",
+        "carol-meeting"
+      ]
+    },
+    {
+      "id": "alice-meeting-current",
+      "task": "current_update",
+      "query": "When is Alice's weekly planning meeting now?",
+      "relevant": [
+        "alice-meeting-current"
+      ],
+      "first_relevant_rank_at_10": 2,
+      "top": [
+        "alice-meeting-old",
+        "alice-meeting-current",
+        "carol-meeting",
+        "bob-meeting",
+        "alice-editor-current",
+        "alice-diet",
+        "alice-editor-old",
+        "carol-diet",
+        "alice-region",
+        "carol-region"
+      ]
+    },
+    {
+      "id": "alice-editor-history",
+      "task": "update_history",
+      "query": "Which video editors has Alice used?",
+      "relevant": [
+        "alice-editor-old",
+        "alice-editor-current"
+      ],
+      "first_relevant_rank_at_10": 1,
+      "top": [
+        "alice-editor-current",
+        "alice-editor-old",
+        "bob-editor",
+        "carol-editor",
+        "alice-meeting-old",
+        "alice-diet",
+        "alice-meeting-current",
+        "carol-diet",
+        "alice-region",
+        "carol-meeting"
+      ]
+    },
+    {
+      "id": "alice-meeting-history",
+      "task": "update_history",
+      "query": "Which times has Alice used for her weekly planning meeting?",
+      "relevant": [
+        "alice-meeting-old",
+        "alice-meeting-current"
+      ],
+      "first_relevant_rank_at_10": 1,
+      "top": [
+        "alice-meeting-old",
+        "alice-meeting-current",
+        "carol-meeting",
+        "bob-meeting",
+        "alice-editor-current",
+        "alice-diet",
+        "alice-editor-old",
+        "carol-diet",
+        "alice-region",
+        "carol-region"
+      ]
+    }
+  ],
+  "process_peak_rss_bytes": 16794439680
+}

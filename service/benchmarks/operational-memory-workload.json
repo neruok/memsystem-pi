@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "records": [
+    {"id": "alice-editor-old", "persona": "alice", "topic": "video-editor", "timestamp": "2026-01-10", "text": "Alice used Adobe Premiere Pro for video editing."},
+    {"id": "alice-editor-current", "persona": "alice", "topic": "video-editor", "timestamp": "2026-06-14", "supersedes": "alice-editor-old", "text": "Alice now uses DaVinci Resolve for video editing."},
+    {"id": "bob-editor", "persona": "bob", "topic": "video-editor", "timestamp": "2026-07-01", "text": "Bob uses Final Cut Pro for video editing."},
+    {"id": "carol-editor", "persona": "carol", "topic": "video-editor", "timestamp": "2026-07-03", "text": "Carol prefers Adobe Premiere Pro for video editing."},
+    {"id": "alice-meeting-old", "persona": "alice", "topic": "weekly-meeting", "timestamp": "2026-02-01", "text": "Alice scheduled her weekly planning meeting for Tuesday at 9 AM."},
+    {"id": "alice-meeting-current", "persona": "alice", "topic": "weekly-meeting", "timestamp": "2026-05-20", "supersedes": "alice-meeting-old", "text": "Alice moved her weekly planning meeting to Thursday at 2 PM."},
+    {"id": "bob-meeting", "persona": "bob", "topic": "weekly-meeting", "timestamp": "2026-05-22", "text": "Bob holds his weekly planning meeting on Thursday at 9 AM."},
+    {"id": "carol-meeting", "persona": "carol", "topic": "weekly-meeting", "timestamp": "2026-05-23", "text": "Carol holds her weekly planning meeting on Tuesday at 2 PM."},
+    {"id": "alice-diet", "persona": "alice", "topic": "diet", "timestamp": "2026-03-08", "text": "Alice must avoid shellfish because of an allergy."},
+    {"id": "bob-diet", "persona": "bob", "topic": "diet", "timestamp": "2026-03-09", "text": "Bob avoids peanuts because of an allergy."},
+    {"id": "carol-diet", "persona": "carol", "topic": "diet", "timestamp": "2026-03-10", "text": "Carol orders shellfish when it is available."},
+    {"id": "alice-region", "persona": "alice", "topic": "deployment-region", "timestamp": "2026-04-12", "text": "Alice deploys the billing service in eu-west-1."},
+    {"id": "bob-region", "persona": "bob", "topic": "deployment-region", "timestamp": "2026-04-13", "text": "Bob deploys the billing service in us-east-2."},
+    {"id": "carol-region", "persona": "carol", "topic": "deployment-region", "timestamp": "2026-04-14", "text": "Carol deploys the billing service in eu-central-1."}
+  ],
+  "queries": [
+    {"id": "alice-diet", "task": "atomic_fact", "persona": "alice", "text": "Which food must Alice avoid?", "answer": "shellfish", "relevant": ["alice-diet"]},
+    {"id": "bob-diet", "task": "atomic_fact", "persona": "bob", "text": "Which food must Bob avoid?", "answer": "peanuts", "relevant": ["bob-diet"]},
+    {"id": "alice-region", "task": "atomic_fact", "persona": "alice", "text": "Where does Alice deploy the billing service?", "answer": "eu-west-1", "relevant": ["alice-region"]},
+    {"id": "carol-region", "task": "atomic_fact", "persona": "carol", "text": "Where does Carol deploy the billing service?", "answer": "eu-central-1", "relevant": ["carol-region"]},
+    {"id": "alice-editor-current", "task": "current_update", "persona": "alice", "text": "Which video editor does Alice use now?", "answer": "DaVinci Resolve", "relevant": ["alice-editor-current"]},
+    {"id": "alice-meeting-current", "task": "current_update", "persona": "alice", "text": "When is Alice's weekly planning meeting now?", "answer": "Thursday at 2 PM", "relevant": ["alice-meeting-current"]},
+    {"id": "alice-editor-history", "task": "update_history", "persona": "alice", "text": "Which video editors has Alice used?", "answer": "Adobe Premiere Pro and DaVinci Resolve", "relevant": ["alice-editor-old", "alice-editor-current"]},
+    {"id": "alice-meeting-history", "task": "update_history", "persona": "alice", "text": "Which times has Alice used for her weekly planning meeting?", "answer": "Tuesday at 9 AM and Thursday at 2 PM", "relevant": ["alice-meeting-old", "alice-meeting-current"]}
+  ]
+}

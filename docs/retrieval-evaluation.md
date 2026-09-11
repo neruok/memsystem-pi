@@ -421,6 +421,102 @@ ConvoMem supplies 75,336 questions with message evidence and distractors. LoCoMo
 
 Use the MTEB LongMemEval conversion. It gives the evaluator standard corpus, query, and relevance-label files.
 
+## Memory workload relevance
+
+LongMemEval does not represent the memory retrieval workload. Its corpus rows contain complete sessions instead of atomic memories.
+
+A 60-query pilot confirmed the mismatch. Direct assistant paraphrases reached 0.900 hit rate at 10. Preference and temporal tasks remained weak. A limit of 50 increased overall hit rate from 0.450 to 0.667, but it did not recover one-third of the evidence.
+
+All 91 relevant sessions fit within 578 tokens. Truncation did not cause the misses. The test measured buried-fact retrieval, personalization, and temporal reasoning together.
+
+Do not run the full semantic LongMemEval test. Keep LongMemEval only for the storage scale check below.
+
+### Atomic operational memory
+
+The committed workload contains 14 atomic memories, eight queries, three personas, and same-topic distractors. Two update queries label only the current memory. Two history queries label both the old and current memories.
+
+Build and run the workload:
+
+```bash
+uv run --project service python service/benchmarks/build-operational-workload.py
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+  uv run --project service --group qwen python \
+  -m memsystem.workload_evaluation \
+  --dataset data/operational-memory-workload \
+  --tasks atomic_fact current_update update_history \
+  --backend qwen --model Qwen/Qwen3-Embedding-4B \
+  --dimensions 1536 --device cuda --batch-size 16 \
+  --task "Given a question about a user's memory, retrieve relevant atomic memories that answer the question" \
+  --k 10 --output docs/operational-memory-workload-evaluation.json
+```
+
+| Task | Hit rate at 10 | Mean recall at 10 | MRR at 10 | nDCG at 10 |
+| --- | ---: | ---: | ---: | ---: |
+| Overall | 1.000 | 1.000 | 0.938 | 0.954 |
+| Atomic fact | 1.000 | 1.000 | 1.000 | 1.000 |
+| Current update | 1.000 | 1.000 | 0.750 | 0.815 |
+| Update history | 1.000 | 1.000 | 1.000 | 1.000 |
+
+The retrieved records contained all normalized reference-answer tokens. This metric measures answer support, not generated-answer accuracy.
+
+The stored result is [operational-memory-workload-evaluation.json](operational-memory-workload-evaluation.json).
+
+### ConvoMem pooled-persona retrieval
+
+[Salesforce ConvoMem](https://huggingface.co/datasets/Salesforce/ConvoMem) supplies message evidence, answers, and filler conversations. The dataset uses the [CC BY-NC 4.0 license](https://creativecommons.org/licenses/by-nc/4.0/).
+
+The workload pools three personas. It has 21,094 messages and 360 query rows. Each task has 20 queries per persona. The update-history slice reuses 60 changing-evidence questions with all historical evidence labels.
+
+The builder skipped three source questions because their generated evidence did not map safely to unique messages. This can cause small selection bias.
+
+Build and run the local workload:
+
+```bash
+uv run --project service python service/benchmarks/build-convomem-pilot.py \
+  --output data/convomem-workload \
+  --queries-per-task 20 --filler-conversations 40 --seed 7
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True \
+  uv run --project service --group qwen python \
+  -m memsystem.workload_evaluation \
+  --dataset data/convomem-workload \
+  --tasks user_evidence assistant_facts changing_evidence \
+    changing_evidence_history preference_evidence implicit_connection \
+  --backend qwen --model Qwen/Qwen3-Embedding-4B \
+  --dimensions 1536 --device cuda --batch-size 16 \
+  --task "Given a question about a user's conversation history, retrieve relevant conversation messages that answer the question" \
+  --k 50 --output data/convomem-workload/qwen3-4b-evaluation.json \
+  --summary-output docs/convomem-workload-evaluation-summary.json
+```
+
+| Candidate limit | Hit rate | Mean recall |
+| ---: | ---: | ---: |
+| 10 | 0.578 | 0.539 |
+| 30 | 0.675 | 0.644 |
+| 50 | 0.703 | 0.675 |
+
+| Task | Hit rate at 10 | Hit rate at 50 | Recall at 50 |
+| --- | ---: | ---: | ---: |
+| User evidence | 0.833 | 0.917 | 0.917 |
+| Assistant facts | 0.983 | 1.000 | 0.986 |
+| Current changing evidence | 0.450 | 0.750 | 0.750 |
+| All changing evidence | 0.800 | 0.950 | 0.814 |
+| Preference evidence | 0.250 | 0.400 | 0.400 |
+| Implicit connection | 0.150 | 0.200 | 0.183 |
+
+Direct facts work well. Current-only update retrieval trails retrieval of any historical evidence by 0.350 hit rate at 10. This difference isolates update selection from topic retrieval.
+
+Preference and implicit-connection queries remain inference tasks. A reranker cannot recover evidence that is absent from 50 candidates.
+
+At 50 candidates, 35.4 percent of results came from another persona. This pool exposes personalization errors that one-persona tests cannot show.
+
+The evaluator can score generated predictions with `--predictions`. Each JSON row must contain `query_id`, `answer`, and `citations`. It reports normalized reference match, exact citation match, and their combined accuracy.
+
+The repository does not contain an answer generator. Therefore, no generated-answer score is reported. Run this score after the Pi answer path exists.
+
+The local ConvoMem data and detailed result stay in the ignored `data/convomem-workload` directory. The repository does not redistribute source records or questions.
+
+The stored aggregate result is [convomem-workload-evaluation-summary.json](convomem-workload-evaluation-summary.json).
+
 ## LongMemEval scale check
 
 The scale check uses the MTEB LongMemEval corpus at revision `9dc1a8fdcf9b5676f87c2cdccac021988f6ff5af`. The corpus contains 237,655 rows.
